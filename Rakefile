@@ -25,8 +25,6 @@ end
 
 def create_virtual_env(dir, python)
   sh "virtualenv #{dir} -p #{python}"
-  virtual_env("pip install -r requirements.txt")
-  virtual_env("pip install -r requirements-test.txt")
 end
 
 task :clean => [] do
@@ -48,6 +46,14 @@ task :dev_env => [] do
   create_virtual_env("env27", "python2.7")
   create_virtual_env("env32", "python3.2")
   create_virtual_env("env33", "python3.3")
+end
+
+task :dependencies => [:dev_env] do
+  envs = ["env26", "env27", "env32", "env33"]
+  envs.each { |env|
+    virtual_env("pip install -r requirements.txt", "#{env}")
+    virtual_env("pip install -r requirements-test.txt", "#{env}")
+  }
 end
 
 task :tests => [] do
