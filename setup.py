@@ -5,6 +5,8 @@ VERSION = open('VERSION', 'r').read().strip()
 PROJECT_NAME = 'THE-PROJECT'
 
 tests_require = [
+    'nose',
+    'coverage',
 ]
 
 install_requires = [
