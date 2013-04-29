@@ -3,6 +3,8 @@ THE-PROJECT
 
 ![Continuous Integration Status](https://secure.travis-ci.org/paulocheque/THE-PROJECT.png)
 
+#### Latest version: 0.0.1 (2013/../..)
+
 DESCRIPTOIN
 
 * [Basic Example of Usage](#basic-example-of-usage)
