@@ -1,4 +1,4 @@
-VERSION = File.open('VERSION').gets.strip
+VERSION = '0.0.1'
 PYTHON_ENVS = [:env26, :env27, :env32, :env33]
 PYTHON_EXECS = {:env26 => "python2.6", :env27 => "python2.7", :env32 => "python3.2", :env33 => "python3.3"}
 
@@ -22,7 +22,7 @@ def colorize(text, color)
 end
 
 def virtual_env(command, env="env33")
-  sh "source #{env}/bin/activate ; #{command}"
+  sh "source #{env}/bin/activate && #{command}"
 end
 
 def create_virtual_env(dir, python)
