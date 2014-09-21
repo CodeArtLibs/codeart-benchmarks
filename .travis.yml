@@ -1,14 +1,25 @@
 language: python
-python:
-  - "2.6"
-  - "2.7"
-  - "3.2"
-  - "3.3"
-# env:
-#   - TORNADO=2.4.1
-#   - TORNADO=3.0
+
 install:
-  - pip install -q tornado==$TORNADO --use-mirrors
-  - pip install -r requirements-test.txt
+  - pip install tox
+  - pip install coveralls
+  #- pip install python-coveralls
+
 script:
-  - nosetests
+  - tox
+
+env:
+  - TOXENV=py27-django12
+  - TOXENV=py27-django13
+  - TOXENV=py27-django14
+  - TOXENV=py27-django15
+  - TOXENV=py27-django16
+  - TOXENV=py33-django16
+  - TOXENV=py27-django17
+  - TOXENV=py33-django17
+  - TOXENV=py34-django17
+  - TOXENV=pypy-django16
+  - TOXENV=pypy-django17
+
+after_success:
+  - coveralls

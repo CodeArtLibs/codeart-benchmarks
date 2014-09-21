@@ -1,82 +1,17 @@
-THE-PROJECT
-====================
+THE_PROJECT
+======================
 
-![Continuous Integration Status](https://secure.travis-ci.org/paulocheque/THE-PROJECT.png)
+[![Build Status](https://travis-ci.org/paulocheque/THE_PROJECT.png?branch=master)](https://travis-ci.org/paulocheque/THE_PROJECT)
+[![Docs Status](https://readthedocs.org/projects/THE_PROJECT/badge/?version=latest)](http://THE_PROJECT.readthedocs.org/en/latest/index.html)
+[![Coverage Status](https://coveralls.io/repos/paulocheque/THE_PROJECT/badge.png?branch=master)](https://coveralls.io/r/paulocheque/THE_PROJECT?branch=master)
+[![PyPi version](https://pypip.in/v/THE_PROJECT/badge.png)](https://crate.io/packages/THE_PROJECT/)
+[![PyPi downloads](https://pypip.in/d/THE_PROJECT/badge.png)](https://crate.io/packages/THE_PROJECT/)
 
-#### Latest version: 0.0.1 (2013/../..)
+**Latest version: 0.0.1 (2014/09)**
 
-DESCRIPTOIN
+Small description.
 
-* [Basic Example of Usage](#basic-example-of-usage)
-  * [Submenu](#submenu)
-* [Installation](#installation)
-* [Change Log](#change-log)
-* [TODO](#todo)
-
-Basic Example of Usage
-------------------------
-
-TEXT
-
-```python
-```
-
-Submenu
-------------
-```python
-```
-
-
-Installation
-------------
-
-```
-pip install THE-PROJECT
-```
-
-#### or
-
-```
-1. Download zip file
-2. Extract it
-3. Execute in the extracted directory: python setup.py install
-```
-
-#### Development version
-
-```
-pip install -e git+git@github.com:paulocheque/THE-PROJECT.git#egg=THE-PROJECT
-```
-
-#### requirements.txt
-
-```
-THE-PROJECT==VERSION
-# or use the development version
-git+git://github.com/paulocheque/THE-PROJECT.git#egg=THE-PROJECT
-```
-
-#### Upgrade:
-
-```
-pip install THE-PROJECT --upgrade --no-deps
-```
-
-#### Requirements
-
-* Python 2.6 / 2.7 / 3.2 / 3.3
-* Tested with ...
-
-
-Change Log
+Documentation
 -------------
 
-#### 0.0.1 (2013/03/30)
-
-* [new] ...
-
-
-TODO
--------------
-
-* ...
+http://THE_PROJECT.readthedocs.org/en/latest/index.html
