@@ -31,6 +31,10 @@ install_requires = [
     'six',
 ]
 
+# from pip.req import parse_requirements
+# install_requires = parse_requirements('requirements.txt')
+# tests_require = parse_requirements('requirements-dev.txt')
+
 setup(name='THE_PROJECT',
       url='https://github.com/paulocheque/THE_PROJECT',
       author="paulocheque",
