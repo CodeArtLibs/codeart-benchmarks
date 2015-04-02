@@ -1,98 +1,30 @@
 # git clone https://gist.github.com/38995ed49140bdf9ec77.git
 #pip freeze > requirements.txt.lock
 
-# WEB SERVERS
-gunicorn
-wsgiref
-uWSGI
-Werkzeug
+# Web Frameworks
+bottle
+falcon
+fapws3
+flask
+tornado
+wheezy.http==0.1.332
 
 # PYTHON
 python-dateutil
 requests
 six
-pytz
-pillow==2.5.1
-#brew install graphviz
-#sudo pip install pygraphviz
-pygraphviz
 
 # SERIALIZATION
 simplejson
-jsonpickle
-#git+git://github.com/paulocheque/jsonpickle.git#egg=jsonpickle
-xmltodict
-dicttoxml
-lxml
-defusedxml
-
-# DJANGO
-git+https://github.com/django/django.git@1.7c1#egg=django-1.7
-#django==1.6.5
-# south
-django-extensions
-django-debug-toolbar
-djangorestframework
-django-tastypie
-django-tastypie-crust
-markdown
-django-filter
-jsonfield
-django-json-field
-
-
-# DJANGO ADMIN
-django-admin-bootstrapped
-django_chartit
-django-admin-tools-stats
-django-adminplus
-nexus
-django-grappelli
-feedparser
-django-admin-tools
-django-fluent-dashboard
-django-dashing
-django-rq-dashboard
+#ujson # not supported by pypy
 
 # DATABASE
-mongoengine
 pymongo
-mysql-python
-
-# TASKS
-django-future
-django-celery
+mongoengine
+motorengine
 
 # CACHE
 redis
-#rq
-git+git://github.com/nvie/rq.git#egg=rq
-#rq-scheduler
-git+git://github.com/ui/rq-scheduler.git#egg=rq-scheduler
-flask
-#rq-dashboard
-git+git://github.com/nvie/rq-dashboard.git#egg=rq-dashboard
-
-# SOCIAL
-tweepy
-py-social
-django-social-auth
-
-# PAYMENT
-python-cielo
-pagseguro
-mercadopago
-moipy
-paypal
-paypalrestsdk
-
-# UTILS
-#pyBarcode
-qrcode
 
 # MONITORING/DEVOPS
 newrelic
-sendgrid
-fabric
-sentry
-

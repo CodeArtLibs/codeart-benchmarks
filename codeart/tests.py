@@ -1,9 +1,9 @@
 # coding: utf-8
 import unittest
 
-from THE-PROJECT import *
+from codeart.benchmarks import *
 
 
-class THETests(unittest.TestCase):
+class CodeArtBenchmarksTests(unittest.TestCase):
     def test_x(self):
         self.assertEquals(True, True)
