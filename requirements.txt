@@ -4,7 +4,6 @@
 # Web Frameworks
 bottle
 falcon
-fapws3
 flask
 tornado
 wheezy.http==0.1.332

@@ -3,6 +3,10 @@ import falcon
 from codeart.benchmarks import *
 
 
+def version():
+    pass
+
+
 class Request1kb(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)

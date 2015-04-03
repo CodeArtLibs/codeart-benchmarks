@@ -1,56 +1,59 @@
-from bottle import route, response
+from flask import Flask, request, render_template, make_response, jsonify
 
 from codeart.benchmarks import *
+
+
+app = Flask(__name__)
 
 
 def version():
     pass
 
 
-@route('/1kb-response')
+@app.route('/1kb-response')
 def request1kb():
     response.content_type = CONTENT_TYPE_PLAIN
     return response1kb()
 
-@route('/100kb-response')
+@app.route('/100kb-response')
 def request100kb():
     response.content_type = CONTENT_TYPE_PLAIN
     return response100kb()
 
-@route('/1mb-response')
+@app.route('/1mb-response')
 def request1mb():
     response.content_type = CONTENT_TYPE_PLAIN
     return response1mb()
 
-@route('/1s-response')
+@app.route('/1s-response')
 def request1s():
     response.content_type = CONTENT_TYPE_PLAIN
     return responseSleep1s()
 
-@route('/json-response')
+@app.route('/json-response')
 def requestJson():
     response.content_type = CONTENT_TYPE_JSON
     return responseJson()
 
-@route('/html-response')
+@app.route('/html-response')
 def requestHtml():
     response.content_type = CONTENT_TYPE_HTML
     return responseHtml()
 
 
-@route('/db-create')
+@app.route('/db-create')
 def requestDBcreate():
     pass
     # return mongoengine_create()
     # return motorengine_create()
 
-@route('/db-read')
+@app.route('/db-read')
 def requestDBread():
     pass
     # return mongoengine_read()
     # return motorengine_read()
 
-@route('/db-crud')
+@app.route('/db-crud')
 def requestDBcrud():
     pass
     # return mongoengine_crud()

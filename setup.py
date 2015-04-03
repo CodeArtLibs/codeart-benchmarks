@@ -16,12 +16,11 @@ from setuptools import setup, find_packages
 VERSION = '0.0.1'
 
 tests_require = [
-    'nose==1.1.2',
-    'coverage==3.7.1',
-    'nose==1.3.0',
-    'tox==1.7.0',
-    'flake8==2.1.0',
-    'jsonfield',
+    'nose',
+    'coverage',
+    'nose',
+    'tox',
+    'flake8',
 ]
 
 install_requires = [
@@ -44,7 +43,6 @@ setup(name='THE_PROJECT',
           'Operating System :: OS Independent',
           'Topic :: Software Development',
           'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3.3',
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: Implementation :: PyPy',
       ],

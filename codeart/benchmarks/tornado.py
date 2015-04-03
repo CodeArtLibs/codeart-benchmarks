@@ -5,6 +5,10 @@ import tornado.gen
 from codeart.benchmarks import *
 
 
+def version():
+    pass
+
+
 class Request1kb(tornado.web.RequestHandler):
     def on_get(self, request, response):
         self.set_header('Content-Type', CONTENT_TYPE_PLAIN)
@@ -34,6 +38,7 @@ class RequestHtml(tornado.web.RequestHandler):
     def on_get(self, request, response):
         self.set_header('Content-Type', CONTENT_TYPE_HTML)
         self.write(responseHtml())
+
 
 class RequestDBcreate(tornado.web.RequestHandler):
     def on_get(self, request, response):
