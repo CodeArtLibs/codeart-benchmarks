@@ -24,15 +24,29 @@ tests_require = [
 ]
 
 install_requires = [
+    'bottle',
+    'falcon',
+    'flask',
+    'tornado',
+    'wheezy.http',
+
     'six',
+
+    'simplejson',
+    #'ujson', # not supported by pypy,
+
+    'mongoengine',
+    'motorengine',
+
+    'redis',
 ]
 
 # from pip.req import parse_requirements
 # install_requires = parse_requirements('requirements.txt')
 # tests_require = parse_requirements('requirements-dev.txt')
 
-setup(name='THE_PROJECT',
-      url='https://github.com/paulocheque/THE_PROJECT',
+setup(name='codeart-benchmarks',
+      url='https://github.com/CodeArtLibs/codeart-benchmarks',
       author="paulocheque",
       author_email='paulocheque@gmail.com',
       keywords='python django testing fixture',

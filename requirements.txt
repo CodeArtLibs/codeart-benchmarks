@@ -6,10 +6,9 @@ bottle
 falcon
 flask
 tornado
-wheezy.http==0.1.332
+wheezy.http
 
 # PYTHON
-python-dateutil
 requests
 six
 
@@ -24,6 +23,3 @@ motorengine
 
 # CACHE
 redis
-
-# MONITORING/DEVOPS
-newrelic

@@ -14,15 +14,33 @@ from fabric.contrib.console import confirm
 
 env.run = local
 env.sudo = local
+env.venv = 'env'
+env.python = 'python2.7'
 
 # Examples of Usage
 # fab --list
 
 VERSION = '0.0.1'
 
+# Utilities
+
+def venv():
+    return 'source %(env)s/bin/activate' % dict(env=env.venv)
+
+# Tasks
+
 @task
 def check():
     env.run('grep -Ir "THE_PROJECT" .')
+
+@task
+def bootstrap():
+    print(red("Configuring application"))
+    env.run('virtualenv %(env)s -p %(python)s' % dict(env=env.venv, python=env.python))
+    with prefix(venv()):
+        env.run('pip install -r requirements.txt')
+        env.run('pip install -r requirements-dev.txt')
+    print(green("Bootstrap success"))
 
 @task
 def clean():
@@ -34,9 +52,9 @@ def clean():
 
 @task
 def install():
-    env.run('python --version')
-    env.run('ruby --version')
-    env.run('easy_install pip')
+    with prefix(venv()):
+        env.run('python --version')
+        env.run('easy_install pip')
 
 @task
 def tag():
@@ -47,6 +65,13 @@ def tag():
 def reset_tag():
     env.run('git tag -d %s' % VERSION)
     env.run('git push origin :refs/tags/%s' % VERSION)
+
+@task
+def first_publish():
+    with prefix(venv()):
+        env.run('python setup.py sdist')
+        env.run('python setup.py register')
+    publish()
 
 @task
 def publish():
@@ -61,4 +86,10 @@ def publish():
     # Go to 'edit' link
     # Update version and save
     # Go to 'files' link and upload the file
-    virtual_env('python setup.py sdist upload', 'env2.7')
+    with prefix(venv()):
+        env.run('python setup.py sdist upload')
+
+@task
+def republish():
+    reset_tag()
+    publish()
