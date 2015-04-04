@@ -1,13 +1,11 @@
-from wheezy.http import HTTPResponse
-from wheezy.http import WSGIApplication
-from wheezy.http import bootstrap_http_defaults
-from wheezy.http import not_found
+import wheezy.http
+from wheezy.http import HTTPResponse, WSGIApplication, bootstrap_http_defaults, not_found
 
 from codeart.benchmarks import *
 
 
 def version():
-    pass
+    return wheezy.http.__version__
 
 
 def request1kb():

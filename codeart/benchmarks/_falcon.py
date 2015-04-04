@@ -4,7 +4,7 @@ from codeart.benchmarks import *
 
 
 def version():
-    pass
+    return falcon.__version__
 
 
 class Request1kb(object):
@@ -54,13 +54,12 @@ class RequestDBcrud(object):
 
 
 app = falcon.API()
-app.add_create("/1kb-response", Request1kb())
-app.add_create("/100kb-response", Request100kb())
-app.add_create("/1mb-response", Request1mb())
-app.add_create("/1s-response", Request1s())
-app.add_create("/json-response", RequestJson())
-app.add_create("/html-response", RequestHtml())
-app.add_create("/db-create", RequestDBcreate())
-app.add_create("/db-read", RequestDBread())
-app.add_create("/db-crud", RequestDBcrud())
-
+app.add_route("/1kb-response", Request1kb())
+app.add_route("/100kb-response", Request100kb())
+app.add_route("/1mb-response", Request1mb())
+app.add_route("/1s-response", Request1s())
+app.add_route("/json-response", RequestJson())
+app.add_route("/html-response", RequestHtml())
+app.add_route("/db-create", RequestDBcreate())
+app.add_route("/db-read", RequestDBread())
+app.add_route("/db-crud", RequestDBcrud())

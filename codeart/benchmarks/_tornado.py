@@ -1,3 +1,4 @@
+import tornado
 import tornado.ioloop
 import tornado.web
 import tornado.gen
@@ -6,7 +7,7 @@ from codeart.benchmarks import *
 
 
 def version():
-    pass
+    return tornado.version
 
 
 class Request1kb(tornado.web.RequestHandler):

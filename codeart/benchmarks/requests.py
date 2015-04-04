@@ -120,5 +120,3 @@ def motorengine_crud():
     o.delete()
     return OK
 
-def version():
-    pass

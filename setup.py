@@ -5,10 +5,10 @@ from setuptools import setup, find_packages
 # python setup.py sdist
 # python setup.py register
 # python setup.py sdist upload
-# pip install django-dynamic-fixture
-# pip install django-dynamic-fixture --upgrade --no-deps
+# pip install codeart-benchmarks
+# pip install codeart-benchmarks --upgrade --no-deps
 # Manual upload to PypI
-# http://pypi.python.org/pypi/django-dynamic-fixture
+# http://pypi.python.org/pypi/codeart-benchmarks
 # Go to 'edit' link
 # Update version and save
 # Go to 'files' link and upload the file

@@ -4,7 +4,7 @@ from codeart.benchmarks import *
 
 
 def version():
-    pass
+    return bottle.__version__
 
 
 @route('/1kb-response')

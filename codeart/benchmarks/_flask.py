@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 def version():
-    pass
+    return flask.__version__
 
 
 @app.route('/1kb-response')
