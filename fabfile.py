@@ -20,7 +20,7 @@ env.python = 'python2.7'
 # Examples of Usage
 # fab --list
 
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 
 # Utilities
 
