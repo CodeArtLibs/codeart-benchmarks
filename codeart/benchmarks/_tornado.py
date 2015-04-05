@@ -1,7 +1,7 @@
 import tornado
 import tornado.ioloop
 import tornado.web
-import tornado.gen
+from tornado import gen
 
 from codeart.benchmarks import *
 
