@@ -8,48 +8,48 @@ def version():
     return wheezy.http.__version__
 
 
-def request1kb():
+def request1kb(request):
     response = HTTPResponse()
     response.write(response1kb())
     return response
 
-def request100kb():
+def request100kb(request):
     response = HTTPResponse()
     response.write(response100kb())
     return response
 
-def request1mb():
+def request1mb(request):
     response = HTTPResponse()
     response.write(response1mb())
     return response
 
-def request1s():
+def request1s(request):
     response = HTTPResponse()
     response.write(responseSleep1s())
     return response
 
-def requestJson():
+def requestJson(request):
     response = HTTPResponse()
     response.write(responseJson())
     return response
 
-def requestHtml():
+def requestHtml(request):
     response = HTTPResponse()
     response.write(responseHtml())
     return response
 
 
-def requestDBcreate():
+def requestDBcreate(request):
     pass
     # return mongoengine_create()
     # return motorengine_create()
 
-def requestDBread():
+def requestDBread(request):
     pass
     # return mongoengine_read()
     # return motorengine_read()
 
-def requestDBcrud():
+def requestDBcrud(request):
     pass
     # return mongoengine_crud()
     # return motorengine_crud()
