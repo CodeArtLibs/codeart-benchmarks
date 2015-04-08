@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, make_response, jsonify
+from flask import Flask, request, Response, render_template, make_response, jsonify
 
 from codeart.benchmarks import *
 
@@ -12,33 +12,27 @@ def version():
 
 @app.route('/1kb-response')
 def request1kb():
-    response.content_type = CONTENT_TYPE_PLAIN
-    return response1kb()
+    return Response(response1kb(), content_type=CONTENT_TYPE_PLAIN)
 
 @app.route('/100kb-response')
 def request100kb():
-    response.content_type = CONTENT_TYPE_PLAIN
-    return response100kb()
+    return Response(response100kb(), content_type=CONTENT_TYPE_PLAIN)
 
 @app.route('/1mb-response')
 def request1mb():
-    response.content_type = CONTENT_TYPE_PLAIN
-    return response1mb()
+    return Response(response1mb(), content_type=CONTENT_TYPE_PLAIN)
 
 @app.route('/1s-response')
 def request1s():
-    response.content_type = CONTENT_TYPE_PLAIN
-    return responseSleep1s()
+    return Response(responseSleep1s(), content_type=CONTENT_TYPE_PLAIN)
 
 @app.route('/json-response')
 def requestJson():
-    response.content_type = CONTENT_TYPE_JSON
-    return responseJson()
+    return Response(responseJson(), content_type=CONTENT_TYPE_JSON)
 
 @app.route('/html-response')
 def requestHtml():
-    response.content_type = CONTENT_TYPE_HTML
-    return responseHtml()
+    return Response(responseHtml(), content_type=CONTENT_TYPE_HTML)
 
 
 @app.route('/db-create')
