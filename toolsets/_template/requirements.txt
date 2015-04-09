@@ -1,6 +1,6 @@
 codeart-benchmarks
 
 # pypy incompatible
-#ujson
 #bjoern
 #uwsgi
+#ujson
