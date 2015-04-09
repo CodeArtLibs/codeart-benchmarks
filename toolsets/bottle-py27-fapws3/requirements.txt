@@ -1,4 +1,0 @@
-codeart-benchmarks
-fapws3==0.11.dev
-bottle
-ujson

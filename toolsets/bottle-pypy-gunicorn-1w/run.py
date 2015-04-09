@@ -1,6 +1,9 @@
 from bottle import run
 from codeart.benchmarks._bottle import *
 
+# import bottle
+
+# app = bottle.default_app()
 
 if __name__ == "__main__":
     import os
