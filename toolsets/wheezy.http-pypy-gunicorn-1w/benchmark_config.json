@@ -1,6 +1,6 @@
 {
     "environment": "Darwin Kernel Version 13.4.0",
-    "name": "wheezy-pypy-gunicorn-1w",
+    "name": "wheezy.http-pypy-gunicorn-1w",
     "language": "pypy2.3.1",
     "web_server": "gunicorn",
     "web_framework": "wheezy",

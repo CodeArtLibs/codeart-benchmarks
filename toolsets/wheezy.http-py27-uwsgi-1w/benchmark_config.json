@@ -1,6 +1,6 @@
 {
     "environment": "Darwin Kernel Version 13.4.0",
-    "name": "wheezy-py27-uwsgi-1w",
+    "name": "wheezy.http-py27-uwsgi-1w",
     "language": "python2.7.9",
     "web_server": "uwsgi",
     "web_framework": "wheezy",
