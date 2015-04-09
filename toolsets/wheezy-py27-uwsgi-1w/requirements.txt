@@ -1,3 +1,4 @@
 codeart-benchmarks
 uwsgi
+wheezy.http
 ujson

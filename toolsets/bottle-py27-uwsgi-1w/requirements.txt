@@ -1,3 +1,4 @@
 codeart-benchmarks
-ujson
 uwsgi
+bottle
+ujson
