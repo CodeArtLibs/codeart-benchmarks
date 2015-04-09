@@ -67,9 +67,14 @@ def reset_tag():
     env.run('git push origin :refs/tags/%s' % VERSION)
 
 @task
-def first_publish():
+def package():
     with prefix(venv()):
         env.run('python setup.py sdist')
+
+@task
+def first_publish():
+    package()
+    with prefix(venv()):
         env.run('python setup.py register')
     publish()
 

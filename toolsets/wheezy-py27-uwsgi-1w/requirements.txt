@@ -1,0 +1,3 @@
+codeart-benchmarks
+uwsgi
+ujson

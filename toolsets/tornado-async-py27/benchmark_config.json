@@ -1,0 +1,12 @@
+{
+    "environment": "Darwin Kernel Version 13.4.0",
+    "name": "tornado-async-py27",
+    "language": "python2.7.9",
+    "web_server": "tornado",
+    "web_framework": "tornado",
+    "web_framework_config": "thread",
+    "db": "MongoDB",
+    "db_service": "MongoLab",
+    "db_engine": "mongoengine",
+    "json_lib": "ujson"
+}

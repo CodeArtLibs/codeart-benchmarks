@@ -74,3 +74,6 @@ cover/
 *.sqlite
 
 *.egg-info
+
+.gradle
+*.class

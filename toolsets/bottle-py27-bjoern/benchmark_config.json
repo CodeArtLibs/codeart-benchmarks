@@ -1,0 +1,12 @@
+{
+    "environment": "Darwin Kernel Version 13.4.0",
+    "name": "bottle-py27-bjoern",
+    "language": "python2.7.9",
+    "web_server": "bjoern",
+    "web_framework": "bottle",
+    "web_framework_config": "async",
+    "db": "MongoDB",
+    "db_service": "MongoLab",
+    "db_engine": "mongoengine",
+    "json_lib": "ujson"
+}

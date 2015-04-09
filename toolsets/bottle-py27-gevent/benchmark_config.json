@@ -1,0 +1,12 @@
+{
+    "environment": "Darwin Kernel Version 13.4.0",
+    "name": "bottle-py27-gevent",
+    "language": "python2.7.9",
+    "web_server": "gevent",
+    "web_framework": "bottle",
+    "web_framework_config": "thread",
+    "db": "MongoDB",
+    "db_service": "MongoLab",
+    "db_engine": "mongoengine",
+    "json_lib": "simplejson"
+}

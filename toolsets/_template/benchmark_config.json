@@ -1,0 +1,12 @@
+{
+    "environment": "Darwin Kernel Version 13.4.0",
+    "name": "",
+    "language": "python2.7.9", // "python2.7.9", "pypy2.3.1"
+    "web_server": "", // "gunicorn", "waitress", "meinheld", "bjoern", "tornado", "fapws3", "gevent", "uwsgi"
+    "web_framework": "", // "bottle", "falcon", "tornado", "flask", "wheezy"
+    "web_framework_config": "thread", // thread, async
+    "db": "MongoDB",
+    "db_service": "MongoLab",
+    "db_engine": "mongoengine", // mongoengine, motorengine
+    "json_lib": "pyjson" // ujson, simplejson, pyjson
+}
