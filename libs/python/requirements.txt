@@ -1,6 +1,8 @@
 # git clone https://gist.github.com/38995ed49140bdf9ec77.git
 #pip freeze > requirements.txt.lock
 
+cython
+
 # Web Frameworks
 bottle
 falcon
@@ -9,8 +11,8 @@ tornado
 wheezy.http
 
 # PYTHON
-requests
-six
+#requests
+#six
 
 # SERIALIZATION
 simplejson
@@ -22,4 +24,4 @@ mongoengine
 motorengine
 
 # CACHE
-redis
+#redis

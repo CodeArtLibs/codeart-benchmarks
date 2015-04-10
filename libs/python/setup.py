@@ -24,21 +24,22 @@ tests_require = [
 ]
 
 install_requires = [
-    'bottle',
-    'falcon',
-    'flask',
-    'tornado',
-    'wheezy.http',
+    # 'cython',
+    # 'bottle',
+    # 'falcon',
+    # 'flask',
+    # 'tornado',
+    # 'wheezy.http',
 
-    'six',
+    # 'six',
 
-    'simplejson',
+    # 'simplejson',
     #'ujson', # not supported by pypy,
 
-    'mongoengine',
-    'motorengine',
+    # 'mongoengine',
+    # 'motorengine',
 
-    'redis',
+    # 'redis',
 ]
 
 # from pip.req import parse_requirements
