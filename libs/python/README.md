@@ -8,7 +8,7 @@ CodeArt Benchmarks
 [![PyPi version](https://pypip.in/v/codeart-benchmarks/badge.png)](https://crate.io/packages/codeart-benchmarks/)
 [![PyPi downloads](https://pypip.in/d/codeart-benchmarks/badge.png)](https://crate.io/packages/codeart-benchmarks/)
 
-**Latest version: 0.0.8 (2015/04)**
+**Latest version: 0.0.9 (2015/04)**
 
 Small description.
 
