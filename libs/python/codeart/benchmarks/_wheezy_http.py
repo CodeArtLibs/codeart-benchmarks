@@ -10,31 +10,37 @@ def version():
 
 def request1kb(request):
     response = HTTPResponse()
+    response.headers.append(('Connection', CONNECTION_CLOSE))
     response.write(response1kb())
     return response
 
 def request100kb(request):
     response = HTTPResponse()
+    response.headers.append(('Connection', CONNECTION_CLOSE))
     response.write(response100kb())
     return response
 
 def request1mb(request):
     response = HTTPResponse()
+    response.headers.append(('Connection', CONNECTION_CLOSE))
     response.write(response1mb())
     return response
 
 def request1s(request):
     response = HTTPResponse()
+    response.headers.append(('Connection', CONNECTION_CLOSE))
     response.write(responseSleep1s())
     return response
 
 def requestJson(request):
     response = HTTPResponse()
+    response.headers.append(('Connection', CONNECTION_CLOSE))
     response.write(responseJson())
     return response
 
 def requestHtml(request):
     response = HTTPResponse()
+    response.headers.append(('Connection', CONNECTION_CLOSE))
     response.write(responseHtml())
     return response
 

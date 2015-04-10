@@ -48,6 +48,8 @@ RESPONSE_HTML = '''
 </ul>
 '''
 
+CONNECTION_CLOSE = 'close'
+CONNECTION_KEEP_ALIVE = 'keep-alive'
 CONTENT_TYPE_PLAIN = 'text/plain'
 CONTENT_TYPE_HTML = 'text/html; charset=utf-8'
 CONTENT_TYPE_JSON = 'application/json'

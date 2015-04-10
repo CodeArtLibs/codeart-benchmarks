@@ -10,46 +10,55 @@ def version():
 class Request1kb(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = response1kb()
 
 class Request100kb(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = response100kb()
 
 class Request1mb(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = response1mb()
 
 class Request1s(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = responseSleep1s()
 
 class RequestJson(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_JSON)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = responseJson()
 
 class RequestHtml(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_HTML)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = responseHtml()
 
 class RequestDBcreate(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = OK
 
 class RequestDBread(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = OK
 
 class RequestDBcrud(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.set_header('Connection', CONNECTION_CLOSE)
         response.body = OK
 
 
