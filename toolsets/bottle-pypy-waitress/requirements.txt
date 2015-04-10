@@ -1,3 +1,8 @@
 codeart-benchmarks
+
 waitress
 bottle
+simplejson
+
+mongoengine
+motorengine

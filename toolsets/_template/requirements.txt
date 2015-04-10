@@ -1,6 +1,9 @@
 codeart-benchmarks
 
-# pypy incompatible
-#bjoern
-#uwsgi
+cython
+
+simplejson
 #ujson
+
+mongoengine
+motorengine

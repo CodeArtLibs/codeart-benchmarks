@@ -1,4 +1,5 @@
 web: python run.py
 #web: uwsgi uwsgi.ini
 #web: gunicorn -b0.0.0.0:8000 --keep-alive=120 --workers=1 run:app
+#web: gunicorn -b0.0.0.0:8000 --keep-alive=120 --workers=1 --worker-class="egg:meinheld#gunicorn_worker" run:app
 #web: sh -c "NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python run.py"

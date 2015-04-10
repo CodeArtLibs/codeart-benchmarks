@@ -1,3 +1,10 @@
 codeart-benchmarks
+
+cython
+
 gevent
 bottle
+ujson
+
+mongoengine
+motorengine
