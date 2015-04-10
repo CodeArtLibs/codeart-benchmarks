@@ -1,3 +1,4 @@
 codeart-benchmarks
 gunicorn
+cython
 wheezy.http

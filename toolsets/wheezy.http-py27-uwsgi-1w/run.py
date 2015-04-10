@@ -1,1 +1,1 @@
-from codeart.benchmarks._wheezy import *
+from codeart.benchmarks._wheezy_http import *
