@@ -1,5 +1,6 @@
 web: python run.py
 #web: uwsgi uwsgi.ini
-#web: gunicorn -b0.0.0.0:8000 --keep-alive=120 --workers=1 run:app
-#web: gunicorn -b0.0.0.0:8000 --keep-alive=120 --workers=1 --worker-class="egg:meinheld#gunicorn_worker" run:app
+#web: gunicorn --bind=0.0.0.0:$PORT --bind=unix:/tmp/wsgi.sock  --keep-alive=120 --workers=1 run:app
+#web: gunicorn --bind=0.0.0.0:$PORT --bind=unix:/tmp/wsgi.sock  --keep-alive=120 --worker-class="egg:meinheld#gunicorn_worker" --workers=1 run:app
 #web: sh -c "NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python run.py"
+#web: gradle run
