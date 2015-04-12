@@ -17,6 +17,6 @@ public class Run {
                 }).build();
         server.start();
 
-        System.out.println("Started server at http://127.1:8080/  Hit ^C to stop");
+        System.out.println("Undertow server started at http://127.0.0.1:8000");
     }
 }
