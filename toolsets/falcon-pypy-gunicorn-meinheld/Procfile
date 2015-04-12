@@ -1,1 +1,1 @@
-web: gunicorn -b0.0.0.0:8000 --keep-alive=120 --workers=1 --worker-class="egg:meinheld#gunicorn_worker" run:app
+web: env/bin/gunicorn --bind=0.0.0.0:$PORT --bind=unix:/tmp/wsgi.sock --keep-alive=120 --worker-class="egg:meinheld#gunicorn_worker" --workers=1 run:app

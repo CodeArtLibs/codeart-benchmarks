@@ -1,6 +1,6 @@
-web: python run.py
-#web: uwsgi uwsgi.ini
-#web: gunicorn --bind=0.0.0.0:$PORT --bind=unix:/tmp/wsgi.sock  --keep-alive=120 --workers=1 run:app
-#web: gunicorn --bind=0.0.0.0:$PORT --bind=unix:/tmp/wsgi.sock  --keep-alive=120 --worker-class="egg:meinheld#gunicorn_worker" --workers=1 run:app
-#web: sh -c "NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python run.py"
+web: env/bin/python run.py
+#web: env/bin/uwsgi uwsgi.ini
+#web: env/bin/gunicorn --bind=0.0.0.0:$PORT --bind=unix:/tmp/wsgi.sock --keep-alive=120 --workers=1 run:app
+#web: env/bin/gunicorn --bind=0.0.0.0:$PORT --bind=unix:/tmp/wsgi.sock --keep-alive=120 --worker-class="egg:meinheld#gunicorn_worker" --workers=1 run:app
+#web: sh -c "NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program env/bin/python run.py"
 #web: gradle run
