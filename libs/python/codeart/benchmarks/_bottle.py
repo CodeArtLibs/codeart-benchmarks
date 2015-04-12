@@ -1,3 +1,4 @@
+import bottle
 from bottle import route, response
 
 from codeart.benchmarks import *
@@ -55,3 +56,6 @@ def requestDBcrud():
     pass
     # return mongoengine_crud()
     # return motorengine_crud()
+
+
+app = bottle.default_app()
