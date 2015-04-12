@@ -1,1 +1,1 @@
-web: env/bin/python run.py
+web: env/bin/waitress-serve --port=$PORT --no-log-socket-errors --connection-limit=1024 --threads=3 run:app
