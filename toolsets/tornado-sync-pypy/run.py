@@ -1,5 +1,3 @@
-import tornado
-import tornado.httpserver
 from codeart.benchmarks._tornado import app
 
 
@@ -7,6 +5,8 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get('PORT', 8000))
 
+    import tornado
+    import tornado.httpserver
     # simple multi-process
     server = tornado.httpserver.HTTPServer(app)
     server.bind(port)
