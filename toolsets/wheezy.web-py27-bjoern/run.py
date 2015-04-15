@@ -1,4 +1,4 @@
-from codeart.benchmarks._wheezy_http import *
+from codeart.benchmarks._wheezy_web import *
 
 
 if __name__ == "__main__":
