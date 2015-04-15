@@ -10,6 +10,10 @@ def version():
     return flask.__version__
 
 
+@app.route('/')
+def requestHome():
+    return requestHtml()
+
 @app.route('/1kb-response')
 def request1kb():
     return Response(response1kb(), content_type=CONTENT_TYPE_PLAIN)

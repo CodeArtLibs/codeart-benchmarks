@@ -8,6 +8,10 @@ def version():
     return bottle.__version__
 
 
+@route('/')
+def requestHome():
+    return requestHtml()
+
 @route('/1kb-response')
 def request1kb():
     response.content_type = CONTENT_TYPE_PLAIN

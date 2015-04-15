@@ -83,6 +83,7 @@ class RequestDBcrudAsync(tornado.web.RequestHandler):
 
 
 app = tornado.web.Application([
+    (r"/", RequestHtml),
     (r"/1kb-response", Request1kb),
     (r"/100kb-response", Request100kb),
     (r"/1mb-response", Request1mb),

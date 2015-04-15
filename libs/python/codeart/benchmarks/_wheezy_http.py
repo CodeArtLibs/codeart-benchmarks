@@ -63,7 +63,9 @@ def requestDBcrud(request):
 
 def router_middleware(request, following):
     path = request.path
-    if path == "/1kb-response":
+    if path == "/":
+        response = requestHtml(request)
+    elif path == "/1kb-response":
         response = request1kb(request)
     elif path == "/100kb-response":
         response = request100kb(request)

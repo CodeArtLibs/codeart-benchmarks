@@ -63,6 +63,7 @@ class RequestDBcrud(object):
 
 
 app = falcon.API()
+app.add_route("/", RequestHtml())
 app.add_route("/1kb-response", Request1kb())
 app.add_route("/100kb-response", Request100kb())
 app.add_route("/1mb-response", Request1mb())
