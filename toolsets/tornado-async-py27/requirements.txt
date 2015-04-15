@@ -1,9 +1,0 @@
-codeart-benchmarks
-
-cython
-
-tornado
-ujson
-
-mongoengine
-motorengine
