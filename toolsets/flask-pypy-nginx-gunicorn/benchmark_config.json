@@ -1,6 +1,6 @@
 {
     "environment": "Darwin Kernel Version 13.4.0",
-    "name": "flask-pypy-nginx-gunicorn",
+    "name": "flask-pypy-nginx-gunicorn-meinheld",
     "language": "pypy2.3.1",
     "web_server": "nginx-gunicorn",
     "web_framework": "flask",
