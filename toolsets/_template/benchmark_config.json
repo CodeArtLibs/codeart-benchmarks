@@ -3,7 +3,7 @@
     "name": "",
     "language": "python2.7.9", // "python2.7.9", "pypy2.3.1"
     "web_server": "", // "gunicorn", "waitress", "meinheld", "bjoern", "tornado", "fapws3", "gevent", "uwsgi"
-    "web_framework": "", // "bottle", "falcon", "tornado", "flask", "wheezy"
+    "web_framework": "", // "bottle", "falcon", "tornado", "flask", "wheezy.http", "wheezy.web"
     "web_framework_config": "thread", // thread, async
     "db": "MongoDB",
     "db_service": "MongoLab",
