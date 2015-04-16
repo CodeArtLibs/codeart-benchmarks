@@ -5,6 +5,8 @@ from wheezy.web.handlers import BaseHandler
 from wheezy.web.middleware import bootstrap_defaults
 from wheezy.web.middleware import path_routing_middleware_factory
 
+from codeart.benchmarks import *
+
 
 class Request1kb(BaseHandler):
     def get(self):
