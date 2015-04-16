@@ -10,31 +10,37 @@ def version():
 
 def request1kb(request):
     response = HTTPResponse()
+    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
     response.write(response1kb())
     return response
 
 def request100kb(request):
     response = HTTPResponse()
+    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
     response.write(response100kb())
     return response
 
 def request1mb(request):
     response = HTTPResponse()
+    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
     response.write(response1mb())
     return response
 
 def request1s(request):
     response = HTTPResponse()
+    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
     response.write(responseSleep1s())
     return response
 
 def requestJson(request):
     response = HTTPResponse()
+    response.headers = [('Content-Type', CONTENT_TYPE_JSON)]
     response.write(responseJson())
     return response
 
 def requestHtml(request):
     response = HTTPResponse()
+    response.headers = [('Content-Type', CONTENT_TYPE_HTML)]
     response.write(responseHtml())
     return response
 

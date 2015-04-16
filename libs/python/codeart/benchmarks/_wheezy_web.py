@@ -15,36 +15,42 @@ def version():
 class Request1kb(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
         response.write(response1kb())
         return response
 
 class Request100kb(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
         response.write(response100kb())
         return response
 
 class Request1mb(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
         response.write(response1mb())
         return response
 
 class Request1s(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
         response.write(responseSleep1s())
         return response
 
 class RequestJson(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_JSON)]
         response.write(responseJson())
         return response
 
 class RequestHtml(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_HTML)]
         response.write(responseHtml())
         return response
 
@@ -52,18 +58,21 @@ class RequestHtml(BaseHandler):
 class RequestDBcreate(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
         response.write(OK)
         return response
 
 class RequestDBread(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
         response.write(OK)
         return response
 
 class RequestDBcrud(BaseHandler):
     def get(self):
         response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
         response.write(OK)
         return response
 
