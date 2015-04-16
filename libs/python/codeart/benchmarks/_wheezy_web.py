@@ -8,6 +8,10 @@ from wheezy.web.middleware import path_routing_middleware_factory
 from codeart.benchmarks import *
 
 
+def version():
+    return wheezy.web.__version__
+
+
 class Request1kb(BaseHandler):
     def get(self):
         response = HTTPResponse()
@@ -66,15 +70,15 @@ class RequestDBcrud(BaseHandler):
 
 all_urls = [
     url('', RequestHtml, name='home'),
-    url(r"/1kb-response", Request1kb, name='1kbresponse'),
-    url(r"/100kb-response", Request100kb, name='100kbresponse'),
-    url(r"/1mb-response", Request1mb, name='1mbresponse'),
-    url(r"/1s-response", Request1s, name='1sresponse'),
-    url(r"/json-response", RequestJson, name='jsonresponse'),
-    url(r"/html-response", RequestHtml, name='htmlresponse'),
-    url(r"/db-create", RequestDBcreate, name='dbcreate'),
-    url(r"/db-read", RequestDBread, name='dbread'),
-    url(r"/db-crud", RequestDBcrud, name='dbcrud'),
+    url('1kb-response', Request1kb, name='1kbresponse'),
+    url('100kb-response', Request100kb, name='100kbresponse'),
+    url('1mb-response', Request1mb, name='1mbresponse'),
+    url('1s-response', Request1s, name='1sresponse'),
+    url('json-response', RequestJson, name='jsonresponse'),
+    url('html-response', RequestHtml, name='htmlresponse'),
+    url('db-create', RequestDBcreate, name='dbcreate'),
+    url('db-read', RequestDBread, name='dbread'),
+    url('db-crud', RequestDBcrud, name='dbcrud'),
 ]
 
 options = {}
