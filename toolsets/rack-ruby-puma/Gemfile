@@ -1,0 +1,8 @@
+# rvm install ruby
+# rvm all do gem install bundler
+# rvm 2.2.1 do bundle install --path env
+source 'http://rubygems.org'
+
+gem 'rack'
+gem 'json'
+gem "puma"

@@ -1,0 +1,5 @@
+# JRuby does not support worker mode
+# Puma bug: -p $PORT with JRuby
+web: rvm jruby do bundle exec puma -b tcp://0.0.0.0:$PORT --pidfile=/tmp/puma.pid -t 0:80 -e production run.ru
+
+

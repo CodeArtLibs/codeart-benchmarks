@@ -77,3 +77,4 @@ cover/
 
 .gradle
 *.class
+Gemfile.lock
