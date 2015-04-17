@@ -1,9 +1,9 @@
 {
     "environment": "Darwin Kernel Version 13.4.0",
-    "name": "bottle-pypy-nginx-waitress",
+    "name": "flask-pypy-gunicorn-meinheld",
     "language": "pypy2.3.1",
-    "web_server": "nginx-waitress",
-    "web_framework": "bottle",
+    "web_server": "gunicorn",
+    "web_framework": "flask",
     "web_framework_config": "thread",
     "db": "MongoDB",
     "db_service": "MongoLab",

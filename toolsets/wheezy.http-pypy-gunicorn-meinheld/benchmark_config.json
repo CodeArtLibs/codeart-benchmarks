@@ -1,8 +1,8 @@
 {
     "environment": "Darwin Kernel Version 13.4.0",
-    "name": "wheezy.http-pypy-nginx-gunicorn-meinheld",
+    "name": "wheezy.http-pypy-gunicorn-meinheld",
     "language": "pypy2.3.1",
-    "web_server": "nginx-gunicorn-meinheld",
+    "web_server": "gunicorn-meinheld",
     "web_framework": "wheezy.http",
     "web_framework_config": "thread",
     "db": "MongoDB",
