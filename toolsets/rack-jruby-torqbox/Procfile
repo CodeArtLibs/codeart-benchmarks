@@ -1,0 +1,2 @@
+web: rvm jruby do bundle exec torqbox -b 0.0.0.0 -p $PORT -E production run.ru
+#web: rvm jruby do bundle exec torqbox -b 0.0.0.0:$PORT --max-threads=80 -E production run.ru

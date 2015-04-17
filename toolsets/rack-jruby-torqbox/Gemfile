@@ -1,0 +1,15 @@
+# rvm install jruby
+# rvm all do gem install bundler
+# rvm jruby do bundle install --path env
+source 'http://rubygems.org'
+
+platforms :jruby do
+    gem 'jruby-openssl'
+    gem 'torqbox'
+end
+
+platforms :ruby do
+end
+
+gem 'rack'
+gem 'json'

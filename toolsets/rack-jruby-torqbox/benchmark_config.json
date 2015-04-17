@@ -1,0 +1,12 @@
+{
+    "environment": "Darwin Kernel Version 13.4.0",
+    "name": "rack-jruby-torqbox",
+    "language": "jruby",
+    "web_server": "torqbox",
+    "web_framework": "rack",
+    "web_framework_config": "thread",
+    "db": "MongoDB",
+    "db_service": "MongoLab",
+    "db_engine": "",
+    "json_lib": "json"
+}
