@@ -1,8 +1,0 @@
-codeart-benchmarks
-
-gunicorn
-bottle
-simplejson
-
-mongoengine
-motorengine
