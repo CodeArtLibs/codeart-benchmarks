@@ -4,7 +4,6 @@
     "language": "python2.7.9",
     "web_server": "bjoern",
     "web_framework": "bottle",
-    "web_framework_config": "async",
     "db": "MongoDB",
     "db_service": "MongoLab",
     "db_engine": "mongoengine",

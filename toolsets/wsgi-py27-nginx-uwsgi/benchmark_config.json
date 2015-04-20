@@ -4,7 +4,6 @@
     "language": "python2.7.9",
     "web_server": "nginx-uwsgi",
     "web_framework": "wsgi",
-    "web_framework_config": "thread",
     "db": "MongoDB",
     "db_service": "MongoLab",
     "db_engine": "mongoengine",

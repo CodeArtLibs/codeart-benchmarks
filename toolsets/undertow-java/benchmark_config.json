@@ -4,7 +4,6 @@
     "language": "java",
     "web_server": "undertow",
     "web_framework": "undertow",
-    "web_framework_config": "thread",
     "db": "MongoDB",
     "db_service": "MongoLab",
     "db_engine": "",
