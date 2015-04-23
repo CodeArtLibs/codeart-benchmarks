@@ -1,0 +1,13 @@
+{
+    "environment": "Darwin Kernel Version 13.4.0",
+    "name": "nodejs-javascript",
+    "language": "javascript",
+    "web_server": "nodejs",
+    "web_server_version": "0.12.2",
+    "web_framework": "nodejs",
+    "web_framework_version": "0.12.2",
+    "db": "MongoDB",
+    "db_service": "MongoLab",
+    "db_engine": "",
+    "json_lib": "js"
+}
