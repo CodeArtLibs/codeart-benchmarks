@@ -1,3 +1,4 @@
+import os
 import json
 import time
 
@@ -14,8 +15,8 @@ from .models import MongoEngineDoc, MongoEngineDoc
 # "/1kb-response"
 # "/100kb-response"
 # "/1mb-response"
-# "/1s-response"
 # "/json-response"
+# "/slow-response"
 # "/html-response"
 # "/db-create"
 # "/db-read"
@@ -27,26 +28,35 @@ CHARS10 = '1kb 1kb - '
 RESPONSE_1KB = CHARS10 * 100 # ~1kb
 RESPONSE_100KB = CHARS10 * 10000 # ~100kb
 RESPONSE_1MB = CHARS10 * 100000 # ~1mb
+
 RESPONSE_JSON = {
     'username': 'codeart',
     'permissions': ['create', 'update', 'list', 'read', 'delete'],
     'groups': {'group1': 'crlud', 'group2': 'cr', 'group3': 'crlu'},
 }
-RESPONSE_1S = lambda: time.sleep(1) # seconds
-RESPONSE_1S_MSG = '1s response'
+
+RESPONSE_SLOW = float(os.getenv('N_SECONDS', 0.1)) # seconds
+RESPONSE_SLOW_MSG = '{}s response'.format(RESPONSE_SLOW)
+
 RESPONSE_HTML = '''
 <ul>
     <li><a href="/1kb-response">1kb text</a></li>
     <li><a href="/100kb-response">100kb text</a></li>
     <li><a href="/1mb-response">1mb text</a></li>
-    <li><a href="/1s-response">1s waiting</a></li>
     <li><a href="/json-response">JSON response</a></li>
     <li><a href="/html-response">HTML response</a></li>
+    <li><a href="/slow-response">{}s waiting</a></li>
+
     <li><a href="/db-create">MongoDB create</a></li>
     <li><a href="/db-read">MongoDB create</a></li>
     <li><a href="/db-crud">MongoDB list</a></li>
+
+    <li><a href="/async-slow-response">Async {}s waiting</a></li>
+    <li><a href="/async-db-create">Async MongoDB create</a></li>
+    <li><a href="/async-db-read">Async MongoDB create</a></li>
+    <li><a href="/async-db-crud">Async MongoDB list</a></li>
 </ul>
-'''
+'''.format(RESPONSE_SLOW)
 
 CONNECTION_CLOSE = 'close'
 CONNECTION_KEEP_ALIVE = 'keep-alive'
@@ -67,18 +77,15 @@ def response100kb():
 def response1mb():
     return RESPONSE_1MB
 
-def response1s():
-    return RESPONSE_1S
-
 def responseJson():
     return to_json(RESPONSE_JSON)
 
 def responseHtml():
     return RESPONSE_HTML
 
-def responseSleep1s():
-    time.sleep(1)
-    return RESPONSE_1S_MSG
+def responseSlow():
+    time.sleep(RESPONSE_SLOW)
+    return RESPONSE_SLOW_MSG
 
 
 def mongoengine_create():
@@ -86,7 +93,7 @@ def mongoengine_create():
     return OK
 
 def mongoengine_read():
-    MongoEngineDoc
+    MongoEngineDoc.objects.get(field1='1')
     return OK
 
 def mongoengine_crud():
@@ -104,7 +111,7 @@ def motorengine_create():
     return OK
 
 def motorengine_read():
-    MotorEngineDoc
+    MotorEngineDoc.objects.filter(field1='1')
     return OK
 
 def motorengine_crud():

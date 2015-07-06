@@ -22,11 +22,6 @@ class Request1mb(object):
         response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
         response.body = response1mb()
 
-class Request1s(object):
-    def on_get(self, request, response):
-        response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
-        response.body = responseSleep1s()
-
 class RequestJson(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_JSON)
@@ -36,6 +31,11 @@ class RequestHtml(object):
     def on_get(self, request, response):
         response.set_header('Content-Type', CONTENT_TYPE_HTML)
         response.body = responseHtml()
+
+class RequestSlow(object):
+    def on_get(self, request, response):
+        response.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        response.body = responseSlow()
 
 class RequestDBcreate(object):
     def on_get(self, request, response):
@@ -58,9 +58,9 @@ app.add_route("/", RequestHtml())
 app.add_route("/1kb-response", Request1kb())
 app.add_route("/100kb-response", Request100kb())
 app.add_route("/1mb-response", Request1mb())
-app.add_route("/1s-response", Request1s())
 app.add_route("/json-response", RequestJson())
 app.add_route("/html-response", RequestHtml())
+app.add_route("/slow-response", RequestSlow())
 app.add_route("/db-create", RequestDBcreate())
 app.add_route("/db-read", RequestDBread())
 app.add_route("/db-crud", RequestDBcrud())

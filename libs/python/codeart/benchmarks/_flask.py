@@ -26,10 +26,6 @@ def request100kb():
 def request1mb():
     return Response(response1mb(), content_type=CONTENT_TYPE_PLAIN)
 
-@app.route('/1s-response')
-def request1s():
-    return Response(responseSleep1s(), content_type=CONTENT_TYPE_PLAIN)
-
 @app.route('/json-response')
 def requestJson():
     return Response(responseJson(), content_type=CONTENT_TYPE_JSON)
@@ -37,6 +33,10 @@ def requestJson():
 @app.route('/html-response')
 def requestHtml():
     return Response(responseHtml(), content_type=CONTENT_TYPE_HTML)
+
+@app.route('/slow-response')
+def requestSlow():
+    return Response(responseSlow(), content_type=CONTENT_TYPE_PLAIN)
 
 
 @app.route('/db-create')

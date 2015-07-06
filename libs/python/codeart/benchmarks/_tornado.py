@@ -25,11 +25,6 @@ class Request1mb(tornado.web.RequestHandler):
         self.set_header('Content-Type', CONTENT_TYPE_PLAIN)
         self.write(response1mb())
 
-class Request1s(tornado.web.RequestHandler):
-    def get(self):
-        self.set_header('Content-Type', CONTENT_TYPE_PLAIN)
-        self.write(responseSleep1s())
-
 class RequestJson(tornado.web.RequestHandler):
     def get(self):
         self.set_header('Content-Type', CONTENT_TYPE_JSON)
@@ -39,6 +34,11 @@ class RequestHtml(tornado.web.RequestHandler):
     def get(self):
         self.set_header('Content-Type', CONTENT_TYPE_HTML)
         self.write(responseHtml())
+
+class RequestSlow(tornado.web.RequestHandler):
+    def get(self):
+        self.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        self.write(responseSlow())
 
 
 class RequestDBcreate(tornado.web.RequestHandler):
@@ -59,6 +59,13 @@ class RequestDBcrud(tornado.web.RequestHandler):
         mongoengine_crud()
         self.write(OK)
 
+
+class RequestSlowAsync(tornado.web.RequestHandler):
+    @gen.coroutine
+    def get(self):
+        self.set_header('Content-Type', CONTENT_TYPE_PLAIN)
+        yield gen.sleep(RESPONSE_SLOW)
+        self.write(RESPONSE_SLOW_MSG)
 
 class RequestDBcreateAsync(tornado.web.RequestHandler):
     @gen.coroutine
@@ -87,10 +94,14 @@ app = tornado.web.Application([
     (r"/1kb-response", Request1kb),
     (r"/100kb-response", Request100kb),
     (r"/1mb-response", Request1mb),
-    (r"/1s-response", Request1s),
     (r"/json-response", RequestJson),
     (r"/html-response", RequestHtml),
+    (r"/slow-response", RequestSlow),
     (r"/db-create", RequestDBcreate),
     (r"/db-read", RequestDBread),
     (r"/db-crud", RequestDBcrud),
+    (r"/async-slow-response", RequestSlowAsync),
+    (r"/async-db-create", RequestDBcreateAsync),
+    (r"/async-db-read", RequestDBreadAsync),
+    (r"/async-db-crud", RequestDBcrudAsync),
 ])

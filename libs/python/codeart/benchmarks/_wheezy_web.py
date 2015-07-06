@@ -33,13 +33,6 @@ class Request1mb(BaseHandler):
         response.write(response1mb())
         return response
 
-class Request1s(BaseHandler):
-    def get(self):
-        response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(responseSleep1s())
-        return response
-
 class RequestJson(BaseHandler):
     def get(self):
         response = HTTPResponse()
@@ -52,6 +45,13 @@ class RequestHtml(BaseHandler):
         response = HTTPResponse()
         response.headers = [('Content-Type', CONTENT_TYPE_HTML)]
         response.write(responseHtml())
+        return response
+
+class RequestSlow(BaseHandler):
+    def get(self):
+        response = HTTPResponse()
+        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
+        response.write(responseSlow())
         return response
 
 
@@ -82,9 +82,9 @@ all_urls = [
     url('1kb-response', Request1kb, name='1kbresponse'),
     url('100kb-response', Request100kb, name='100kbresponse'),
     url('1mb-response', Request1mb, name='1mbresponse'),
-    url('1s-response', Request1s, name='1sresponse'),
     url('json-response', RequestJson, name='jsonresponse'),
     url('html-response', RequestHtml, name='htmlresponse'),
+    url('slow-response', RequestSlow, name='slowresponse'),
     url('db-create', RequestDBcreate, name='dbcreate'),
     url('db-read', RequestDBread, name='dbread'),
     url('db-crud', RequestDBcrud, name='dbcrud'),

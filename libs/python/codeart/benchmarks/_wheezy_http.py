@@ -26,12 +26,6 @@ def request1mb(request):
     response.write(response1mb())
     return response
 
-def request1s(request):
-    response = HTTPResponse()
-    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-    response.write(responseSleep1s())
-    return response
-
 def requestJson(request):
     response = HTTPResponse()
     response.headers = [('Content-Type', CONTENT_TYPE_JSON)]
@@ -42,6 +36,12 @@ def requestHtml(request):
     response = HTTPResponse()
     response.headers = [('Content-Type', CONTENT_TYPE_HTML)]
     response.write(responseHtml())
+    return response
+
+def requestSlow(request):
+    response = HTTPResponse()
+    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
+    response.write(responseSlow())
     return response
 
 
@@ -71,12 +71,12 @@ def router_middleware(request, following):
         response = request100kb(request)
     elif path == "/1mb-response":
         response = request1mb(request)
-    elif path == "/1s-response":
-        response = request1s(request)
     elif path == "/json-response":
         response = requestJson(request)
     elif path == "/html-response":
         response = requestHtml(request)
+    elif path == "/slow-response":
+        response = requestSlow(request)
     elif path == "/db-create":
         response = requestDBcreate(request)
     elif path == "/db-read":
