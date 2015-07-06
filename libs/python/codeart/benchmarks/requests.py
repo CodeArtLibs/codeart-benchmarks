@@ -56,7 +56,7 @@ RESPONSE_HTML = '''
     <li><a href="/async-db-read">Async MongoDB create</a></li>
     <li><a href="/async-db-crud">Async MongoDB list</a></li>
 </ul>
-'''.format(RESPONSE_SLOW)
+'''.format(RESPONSE_SLOW, RESPONSE_SLOW)
 
 CONNECTION_CLOSE = 'close'
 CONNECTION_KEEP_ALIVE = 'keep-alive'
