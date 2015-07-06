@@ -11,10 +11,10 @@ if __name__ == "__main__":
     import tornado.httpserver
     # simple multi-process
     server = tornado.httpserver.HTTPServer(app)
-    server.bind(PORT)
+    server.bind(get_port())
     server.start(0)  # Forks multiple sub-processes
     tornado.ioloop.IOLoop.instance().start()
 
     # simple single-process
-    # app.listen(PORT)
+    # app.listen(get_port())
     # tornado.ioloop.IOLoop.instance().start()

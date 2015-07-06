@@ -9,4 +9,4 @@ if __name__ == "__main__":
     codeart.benchmarks.servers.meinheld.configure()
 
     from bottle import run
-    run(host='0.0.0.0', port=PORT, server='meinheld', quiet=True)
+    run(host='0.0.0.0', port=get_port(), server='meinheld', quiet=True)

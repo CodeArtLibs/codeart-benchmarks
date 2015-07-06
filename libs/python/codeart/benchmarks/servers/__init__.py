@@ -10,5 +10,9 @@ def disable_logs():
     logger.propagate = False
 
 
-SERVER = os.getenv('SERVER', None)
-PORT = int(os.environ.get('PORT', 8000))
+def get_server():
+    return os.getenv('SERVER', None)
+
+
+def get_port():
+    return int(os.environ.get('PORT', 8000))

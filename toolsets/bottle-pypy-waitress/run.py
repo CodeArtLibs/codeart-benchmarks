@@ -12,4 +12,4 @@ codeart.benchmarks.servers.disable_logs()
 #     logger.disabled = True
 #     logger.propagate = False
 
-#     run(host='0.0.0.0', port=PORT, server='waitress', quiet=True)
+#     run(host='0.0.0.0', port=get_port(), server='waitress', quiet=True)

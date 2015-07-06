@@ -12,6 +12,6 @@ if __name__ == "__main__":
     codeart.benchmarks.servers.tornado.disable_logs()
 
     if server:
-        run(host='0.0.0.0', port=PORT, server=SERVER)
+        run(host='0.0.0.0', port=get_port(), server=get_server())
     else:
-        run(host='0.0.0.0', port=PORT)
+        run(host='0.0.0.0', port=get_port())

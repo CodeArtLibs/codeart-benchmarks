@@ -8,4 +8,4 @@ if __name__ == "__main__":
     codeart.benchmarks.servers.tornado.disable_logs()
 
     from bottle import run
-    run(host='0.0.0.0', port=PORT, server='tornado', quiet=True)
+    run(host='0.0.0.0', port=get_port(), server='tornado', quiet=True)

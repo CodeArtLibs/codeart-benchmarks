@@ -7,4 +7,4 @@ from codeart.benchmarks._bottle import *
 if __name__ == "__main__":
     codeart.benchmarks.servers.disable_logs()
 
-    run(host='0.0.0.0', port=PORT, server='gevent', quiet=True, log=None)
+    run(host='0.0.0.0', port=get_port(), server='gevent', quiet=True, log=None)
