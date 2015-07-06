@@ -1,9 +1,9 @@
+import codeart.benchmarks.servers
 from codeart.benchmarks._bottle import *
 
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get('PORT', 8000))
+    codeart.benchmarks.servers.disable_logs()
 
     from bottle import run
-    run(host='0.0.0.0', port=port, server='bjoern', quiet=True, reuse_port=True)
+    run(host='0.0.0.0', port=PORT, server='bjoern', quiet=True, reuse_port=True)

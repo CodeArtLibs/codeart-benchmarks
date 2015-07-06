@@ -7,3 +7,7 @@ def disable_logs():
     logger.setLevel(logging.CRITICAL)
     logger.disabled = True
     logger.propagate = False
+
+
+SERVER = os.getenv('SERVER', None)
+PORT = int(os.environ.get('PORT', 8000))
