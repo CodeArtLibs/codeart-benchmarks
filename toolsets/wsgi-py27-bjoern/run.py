@@ -1,12 +1,12 @@
-import codeart.benchmarks.servers
+import codeart.benchmarks.servers as _util
 from codeart.benchmarks._wsgi import *
 from codeart.benchmarks.requests import *
 
 
-codeart.benchmarks.servers.disable_logs()
+_util.disable_logs()
 
 
 if __name__ == "__main__":
     import bjoern
-    bjoern.listen(app, 'localhost', get_port(), reuse_port=True)
+    bjoern.listen(app, 'localhost', _util.get_port(), reuse_port=True)
     bjoern.run()

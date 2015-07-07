@@ -1,8 +1,8 @@
-import codeart.benchmarks.servers
-import codeart.benchmarks.servers.meinheld
+import codeart.benchmarks.servers as _util
+import codeart.benchmarks.servers._meinheld as _meinheld
 from codeart.benchmarks._falcon import *
 
 
-codeart.benchmarks.servers.disable_logs()
-codeart.benchmarks.servers.meinheld.disable_logs()
-codeart.benchmarks.servers.meinheld.configure()
+_util.disable_logs()
+_meinheld.disable_logs()
+_meinheld.configure()

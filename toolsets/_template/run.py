@@ -1,17 +1,17 @@
-import codeart.benchmarks.servers
-import codeart.benchmarks.servers.meinheld
-import codeart.benchmarks.servers.tornado
+import codeart.benchmarks.servers as _util
+import codeart.benchmarks.servers._meinheld as _meinheld
+import codeart.benchmarks.servers._tornado as _tornado
 from codeart.benchmarks.__FRAMEWORK import *
 from codeart.benchmarks.requests import *
 
 
 if __name__ == "__main__":
-    codeart.benchmarks.servers.disable_logs()
-    codeart.benchmarks.servers.meinheld.disable_logs()
-    codeart.benchmarks.servers.meinheld.configure()
-    codeart.benchmarks.servers.tornado.disable_logs()
+    _util.disable_logs()
+    _meinheld.disable_logs()
+    _meinheld.configure()
+    _tornado.disable_logs()
 
     if server:
-        run(host='0.0.0.0', port=get_port(), server=get_server())
+        run(host='0.0.0.0', port=_util.get_port(), server=_util.get_server())
     else:
-        run(host='0.0.0.0', port=get_port())
+        run(host='0.0.0.0', port=_util.get_port())

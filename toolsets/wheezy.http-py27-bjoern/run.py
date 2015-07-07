@@ -1,10 +1,10 @@
-import codeart.benchmarks.servers
+import codeart.benchmarks.servers as _util
 from codeart.benchmarks._wheezy_http import *
 
 
 if __name__ == "__main__":
-    codeart.benchmarks.servers.disable_logs()
+    _util.disable_logs()
 
     import bjoern
-    bjoern.listen(app, 'localhost', get_port(), reuse_port=True)
+    bjoern.listen(app, 'localhost', _util.get_port(), reuse_port=True)
     bjoern.run()

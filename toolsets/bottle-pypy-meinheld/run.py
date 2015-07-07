@@ -1,12 +1,12 @@
-import codeart.benchmarks.servers
-import codeart.benchmarks.servers.meinheld
+import codeart.benchmarks.servers as _util
+import codeart.benchmarks.servers._meinheld as _meinheld
 from codeart.benchmarks._bottle import *
 
 
 if __name__ == "__main__":
-    codeart.benchmarks.servers.disable_logs()
-    codeart.benchmarks.servers.meinheld.disable_logs()
-    codeart.benchmarks.servers.meinheld.configure()
+    _util.disable_logs()
+    _meinheld.disable_logs()
+    _meinheld.configure()
 
     from bottle import run
-    run(host='0.0.0.0', port=get_port(), server='meinheld', quiet=True)
+    run(host='0.0.0.0', port=_util.get_port(), server='meinheld', quiet=True)

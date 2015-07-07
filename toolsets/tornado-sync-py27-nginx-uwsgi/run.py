@@ -1,10 +1,10 @@
-import codeart.benchmarks.servers
-import codeart.benchmarks.servers.tornado
+import codeart.benchmarks.servers as _util
+import codeart.benchmarks.servers._tornado as _tornado
 from codeart.benchmarks._tornado import *
 
 
-codeart.benchmarks.servers.disable_logs()
-codeart.benchmarks.servers.tornado.disable_logs()
+_util.disable_logs()
+_tornado.disable_logs()
 
 
 import tornado.wsgi

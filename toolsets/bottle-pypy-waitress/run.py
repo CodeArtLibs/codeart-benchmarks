@@ -1,8 +1,8 @@
-import codeart.benchmarks.servers
+import codeart.benchmarks.servers as _util
 from codeart.benchmarks._bottle import *
 
 
-codeart.benchmarks.servers.disable_logs()
+_util.disable_logs()
 
 
 # if __name__ == "__main__":
@@ -12,4 +12,4 @@ codeart.benchmarks.servers.disable_logs()
 #     logger.disabled = True
 #     logger.propagate = False
 
-#     run(host='0.0.0.0', port=get_port(), server='waitress', quiet=True)
+#     run(host='0.0.0.0', port=_util.get_port(), server='waitress', quiet=True)

@@ -1,5 +1,5 @@
-import codeart.benchmarks.servers
+import codeart.benchmarks.servers as _util
 from codeart.benchmarks._bottle import *
 
 
-codeart.benchmarks.servers.disable_logs()
+_util.disable_logs()
