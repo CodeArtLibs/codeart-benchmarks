@@ -6,4 +6,4 @@ from codeart.benchmarks import *
 
 class CodeArtBenchmarksTests(unittest.TestCase):
     def test_x(self):
-        self.assertEquals(True, True)
+        pass
