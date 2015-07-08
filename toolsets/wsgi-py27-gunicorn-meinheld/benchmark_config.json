@@ -6,7 +6,6 @@
     "web_framework": "wsgi",
     "web_framework_version": "",
     "db": "MongoDB",
-    "db_service": "MongoLab",
     "db_engine": "mongoengine",
     "json_lib": "ujson"
 }

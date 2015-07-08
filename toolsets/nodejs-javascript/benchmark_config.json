@@ -6,7 +6,6 @@
     "web_framework": "nodejs",
     "web_framework_version": "0.12.2",
     "db": "MongoDB",
-    "db_service": "MongoLab",
     "db_engine": "",
     "json_lib": "js"
 }
