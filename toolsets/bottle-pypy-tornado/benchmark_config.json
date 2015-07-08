@@ -1,11 +1,12 @@
 {
-    "name": "bottle-pypy-tornado",
-    "language": "pypy2.3.1",
-    "web_server": "tornado",
-    "web_server_version": "",
-    "web_framework": "bottle",
-    "web_framework_version": "",
-    "db": "MongoDB",
-    "db_engine": "mongoengine",
-    "json_lib": "simplejson"
+    "db": "MongoDB", 
+    "db_engine": "mongoengine", 
+    "json_lib": "simplejson", 
+    "language": "pypy", 
+    "language_version": "python 2.7.6 (32f35069a16d, jun 06 2014, 20:12:47) | [pypy 2.3.1 with gcc 4.2.1 compatible apple llvm 5.0 (clang-500.2.79)]", 
+    "name": "bottle-pypy-tornado", 
+    "web_framework": "bottle", 
+    "web_framework_version": "0.12.8", 
+    "web_server": "tornado", 
+    "web_server_version": "4.2"
 }

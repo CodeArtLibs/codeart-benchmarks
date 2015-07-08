@@ -1,11 +1,12 @@
 {
-    "name": "rack-jruby-torqbox",
-    "language": "jruby",
-    "web_server": "torqbox",
-    "web_server_version": "",
-    "web_framework": "rack",
-    "web_framework_version": "",
-    "db": "MongoDB",
-    "db_engine": "",
-    "json_lib": "json"
+    "db": "MongoDB", 
+    "db_engine": "", 
+    "json_lib": "json", 
+    "language": "jruby", 
+    "language_version": "", 
+    "name": "rack-jruby-torqbox", 
+    "web_framework": "rack", 
+    "web_framework_version": "", 
+    "web_server": "torqbox", 
+    "web_server_version": ""
 }

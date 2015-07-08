@@ -1,11 +1,12 @@
 {
-    "name": "falcon-pypy-nginx-gunicorn-meinheld",
-    "language": "pypy2.3.1",
-    "web_server": "nginx-gunicorn-meinheld",
-    "web_server_version": "",
-    "web_framework": "falcon",
-    "web_framework_version": "",
-    "db": "MongoDB",
-    "db_engine": "mongoengine",
-    "json_lib": "simplejson"
+    "db": "MongoDB", 
+    "db_engine": "mongoengine", 
+    "json_lib": "simplejson", 
+    "language": "pypy", 
+    "language_version": "python 2.7.6 (32f35069a16d, jun 06 2014, 20:12:47) | [pypy 2.3.1 with gcc 4.2.1 compatible apple llvm 5.0 (clang-500.2.79)]", 
+    "name": "falcon-pypy-nginx-gunicorn-meinheld", 
+    "web_framework": "falcon", 
+    "web_framework_version": "0.3.0", 
+    "web_server": "nginx-gunicorn-meinheld", 
+    "web_server_version": "1.7.10-19.3.0-0.5.7"
 }

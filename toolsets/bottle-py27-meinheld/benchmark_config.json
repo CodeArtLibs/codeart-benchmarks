@@ -1,11 +1,12 @@
 {
-    "name": "bottle-py27-meinheld",
-    "language": "python2.7.9",
-    "web_server": "meinheld",
-    "web_server_version": "",
-    "web_framework": "bottle",
-    "web_framework_version": "",
-    "db": "MongoDB",
-    "db_engine": "mongoengine",
-    "json_lib": "simplejson"
+    "db": "MongoDB", 
+    "db_engine": "mongoengine", 
+    "json_lib": "simplejson", 
+    "language": "python2.7", 
+    "language_version": "python 2.7.5", 
+    "name": "bottle-py27-meinheld", 
+    "web_framework": "bottle", 
+    "web_framework_version": "0.12.8", 
+    "web_server": "meinheld", 
+    "web_server_version": "0.5.7"
 }

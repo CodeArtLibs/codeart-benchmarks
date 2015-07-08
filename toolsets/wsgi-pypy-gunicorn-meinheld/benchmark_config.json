@@ -1,11 +1,12 @@
 {
-    "name": "wsgi-pypy-gunicorn-meinheld",
-    "language": "python2.7.9",
-    "web_server": "gunicorn-meinheld",
-    "web_server_version": "",
-    "web_framework": "wsgi",
-    "web_framework_version": "",
-    "db": "MongoDB",
-    "db_engine": "mongoengine",
-    "json_lib": "simplejson"
+    "db": "MongoDB", 
+    "db_engine": "mongoengine", 
+    "json_lib": "simplejson", 
+    "language": "pypy", 
+    "language_version": "python 2.7.5", 
+    "name": "wsgi-pypy-gunicorn-meinheld", 
+    "web_framework": "wsgi", 
+    "web_framework_version": "", 
+    "web_server": "gunicorn-meinheld", 
+    "web_server_version": "19.3.0-0.5.7"
 }
