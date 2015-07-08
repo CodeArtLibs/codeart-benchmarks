@@ -1,5 +1,4 @@
 {
-    "environment": "Darwin Kernel Version 13.4.0",
     "name": "wsgi-py27-gunicorn-meinheld",
     "language": "python2.7.9",
     "web_server": "gunicorn-meinheld",

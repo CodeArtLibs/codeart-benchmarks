@@ -1,5 +1,4 @@
 {
-    "environment": "Darwin Kernel Version 13.4.0",
     "name": "falcon-pypy-gunicorn-tornado",
     "language": "pypy2.3.1",
     "web_server": "gunicorn-tornado",

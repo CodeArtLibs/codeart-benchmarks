@@ -1,5 +1,4 @@
 {
-    "environment": "Darwin Kernel Version 13.4.0",
     "name": "falcon-py27-bjoern",
     "language": "python2.7.9",
     "web_server": "bjoern",

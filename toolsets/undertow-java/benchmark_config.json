@@ -1,5 +1,4 @@
 {
-    "environment": "Darwin Kernel Version 13.4.0",
     "name": "undertow-java",
     "language": "java",
     "web_server": "undertow",

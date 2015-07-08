@@ -1,5 +1,4 @@
 {
-    "environment": "Darwin Kernel Version 13.4.0",
     "name": "bottle-py27-nginx-uwsgi",
     "language": "python2.7.9",
     "web_server": "nginx-uwsgi",

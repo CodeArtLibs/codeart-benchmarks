@@ -1,5 +1,4 @@
 {
-    "environment": "Darwin Kernel Version 13.4.0",
     "name": "rack-ruby-puma",
     "language": "ruby",
     "web_server": "puma",

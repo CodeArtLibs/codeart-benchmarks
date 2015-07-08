@@ -1,5 +1,4 @@
 {
-    "environment": "Darwin Kernel Version 13.4.0",
     "name": "rack-jruby-puma",
     "language": "jruby",
     "web_server": "puma",
