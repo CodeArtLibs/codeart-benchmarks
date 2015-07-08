@@ -1,6 +1,10 @@
 from codeart.benchmarks import *
 
 
+def version():
+    return 'spec'
+
+
 def response_1kb(environ, start_response):
     data = RESPONSE_1KB
     response_headers = [
