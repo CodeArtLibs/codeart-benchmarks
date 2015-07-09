@@ -9,7 +9,7 @@ def version():
 
 class Request1kb(object):
     def on_get(self, request, response):
-        response.set_header(, CONTENT_TYPE_PLAIN)
+        response.set_header(CONTENT_TYPE, CONTENT_TYPE_PLAIN)
         response.body = response_1kb()
 
 class Request100kb(object):
