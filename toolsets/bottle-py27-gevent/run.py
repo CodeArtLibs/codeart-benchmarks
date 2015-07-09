@@ -1,5 +1,8 @@
 from gevent import monkey; monkey.patch_all()
+
 from bottle import run
+
+import codeart.benchmarks
 import codeart.benchmarks.servers as _util
 from codeart.benchmarks._bottle import *
 

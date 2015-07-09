@@ -1,3 +1,4 @@
+import codeart.benchmarks
 import codeart.benchmarks.servers as _util
 import codeart.benchmarks.servers._meinheld as _meinheld
 import codeart.benchmarks.servers._tornado as _tornado

@@ -1,3 +1,12 @@
+// var http = require('http')
+//   , url = require('url')
+//   , async = require('async')
+//   , mongoose = require('mongoose')
+//   , conn = mongoose.connect('mongodb://localhost/hello_world')
+//   , MongoClient = require('mongodb').MongoClient
+//   , connMap = { user: 'benchmarkdbuser', password: 'benchmarkdbpass', database: 'hello_world', host: 'localhost' }
+
+
 var http = require('http')
 var url = require('url')
 var port = process.env.PORT || 8000
