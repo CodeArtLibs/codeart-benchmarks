@@ -43,10 +43,10 @@ class MotorEngineDoc2(motorengine.Document):
 
 def create_test_db():
     print('Cleaning MongoDB docs')
-    MongoEngineDoc.objects.all().delete()
-    MongoEngineDoc2.objects.all().delete()
-    MotorEngineDoc.objects.all().delete()
-    MotorEngineDoc2.objects.all().delete()
+    MongoEngineDoc.objects.delete()
+    MongoEngineDoc2.objects.delete()
+    MotorEngineDoc.objects.delete()
+    MotorEngineDoc2.objects.delete()
     print('Creating MongoDB docs')
     for i in range(10000):
         v = os.urandom(24).encode('hex')
