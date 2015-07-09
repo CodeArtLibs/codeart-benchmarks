@@ -11,7 +11,7 @@ def version():
 
 
 @app.route('/')
-def request_home()():
+def request_home():
     return response_html()
 
 @app.route('/1kb-response')
