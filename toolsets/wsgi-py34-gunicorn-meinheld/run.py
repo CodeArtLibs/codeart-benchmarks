@@ -1,6 +1,6 @@
 import codeart.benchmarks.servers as _util
 import codeart.benchmarks.servers._meinheld as _meinheld
-from codeart.benchmarks._wsgi import *
+from codeart.benchmarks._wsgi_py3 import *
 
 
 _util.disable_logs()
