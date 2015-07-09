@@ -118,7 +118,7 @@ def mongoengine_read_queries():
     r = []
     for _ in range(10):
         i = random.randint(0, n-1)
-        o = MongoEngineDoc.objects.all()[i]
+        o = MongoEngineDoc.objects[i]
         r.append(o.to_json())
     return r
 
@@ -143,7 +143,7 @@ def motorengine_read_queries():
     r = []
     for _ in range(10):
         i = random.randint(0, n-1)
-        o = MotorEngineDoc.objects.all()[i]
+        o = MotorEngineDoc.objects[i]
         r.append(o.to_json())
     return r
 

@@ -21,7 +21,9 @@ simplejson
 # DATABASE
 pymongo
 mongoengine
+
+motor
 motorengine
 
 # CACHE
-#redis
+redis

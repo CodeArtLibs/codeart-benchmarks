@@ -41,15 +41,23 @@ class MotorEngineDoc2(motorengine.Document):
     field5 = motorengine.StringField(max_length=200)
 
 
-def create_test_db():
-    print('Cleaning MongoDB docs')
+def create_mongoengine_test_db():
+    print('[MongoEngine] Cleaning MongoDB docs')
     MongoEngineDoc.objects.delete()
     MongoEngineDoc2.objects.delete()
-    MotorEngineDoc.objects.delete()
-    MotorEngineDoc2.objects.delete()
-    print('Creating MongoDB docs')
+    print('[MongoEngine] Creating MongoDB docs')
     for i in range(10000):
         v = os.urandom(24).encode('hex')
         MongoEngineDoc.objects.create(field1=v, field2=v, field3=v, field4=v, field5=v)
+    print('[MongoEngine] MongoDB test docs created')
+
+
+def create_motorengine_test_db():
+    print('[MotorEngine] Cleaning MongoDB docs')
+    MotorEngineDoc.objects.delete()
+    MotorEngineDoc2.objects.delete()
+    print('[MotorEngine] Creating MongoDB docs')
+    for i in range(10000):
+        v = os.urandom(24).encode('hex')
         MotorEngineDoc.objects.create(field1=v, field2=v, field3=v, field4=v, field5=v)
-    print('MongoDB test docs created')
+    print('[MotorEngine] MongoDB test docs created')
