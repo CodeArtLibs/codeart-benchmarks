@@ -8,8 +8,8 @@ def version():
 def response_1kb(environ, start_response):
     data = RESPONSE_1KB
     response_headers = [
-        ('Content-type', CONTENT_TYPE_PLAIN),
-        ('Content-Length', str(len(data))),
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
     ]
     start_response(b'200 OK', response_headers)
     return [data]
@@ -17,8 +17,8 @@ def response_1kb(environ, start_response):
 def response_100kb(environ, start_response):
     data = RESPONSE_100KB
     response_headers = [
-        ('Content-type', CONTENT_TYPE_PLAIN),
-        ('Content-Length', str(len(data))),
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
     ]
     start_response(b'200 OK', response_headers)
     return [data]
@@ -26,8 +26,8 @@ def response_100kb(environ, start_response):
 def response_1mb(environ, start_response):
     data = RESPONSE_1MB
     response_headers = [
-        ('Content-type', CONTENT_TYPE_PLAIN),
-        ('Content-Length', str(len(data))),
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
     ]
     start_response(b'200 OK', response_headers)
     return [data]
@@ -36,8 +36,8 @@ def response_json(environ, start_response):
     response = RESPONSE_JSON
     data = to_json(response)
     response_headers = [
-        ('Content-type', CONTENT_TYPE_JSON),
-        ('Content-Length', str(len(data))),
+        (CONTENT_TYPE, CONTENT_TYPE_JSON),
+        (CONTENT_LENGTH, str(len(data))),
     ]
     start_response(b'200 OK', response_headers)
     return [data]
@@ -45,17 +45,36 @@ def response_json(environ, start_response):
 def response_html(environ, start_response):
     data = RESPONSE_HTML
     response_headers = [
-        ('Content-type', CONTENT_TYPE_HTML),
-        ('Content-Length', str(len(data))),
+        (CONTENT_TYPE, CONTENT_TYPE_HTML),
+        (CONTENT_LENGTH, str(len(data))),
     ]
     start_response(b'200 OK', response_headers)
     return [data]
 
 def response_slow(environ, start_response):
-    data = responseSlow()
+    data = response_slow()
     response_headers = [
-        ('Content-type', CONTENT_TYPE_PLAIN),
-        ('Content-Length', str(len(data))),
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+
+def response_db_read(environ, start_response):
+    data = response_db_read_queries()
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_JSON),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+def response_db_write(environ, start_response):
+    data = response_db_write_queries()
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_JSON),
+        (CONTENT_LENGTH, str(len(data))),
     ]
     start_response(b'200 OK', response_headers)
     return [data]
@@ -73,5 +92,9 @@ def app(environ, start_response):
         return response_1mb(environ, start_response)
     elif path.startswith('/slow-response'):
         return response_slow(environ, start_response)
+    elif path.startswith('/db-read'):
+        return response_db_read(environ, start_response)
+    elif path.startswith('/db-write'):
+        return response_db_write(environ, start_response)
     else:
         return response_html(environ, start_response)

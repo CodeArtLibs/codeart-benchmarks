@@ -11,48 +11,38 @@ def version():
 
 
 @app.route('/')
-def requestHome():
-    return requestHtml()
+def request_home()():
+    return response_html()
 
 @app.route('/1kb-response')
-def request1kb():
-    return Response(response1kb(), content_type=CONTENT_TYPE_PLAIN)
+def request_1kb():
+    return Response(response_1kb(), content_type=CONTENT_TYPE_PLAIN)
 
 @app.route('/100kb-response')
-def request100kb():
-    return Response(response100kb(), content_type=CONTENT_TYPE_PLAIN)
+def request_100kb():
+    return Response(response_100kb(), content_type=CONTENT_TYPE_PLAIN)
 
 @app.route('/1mb-response')
-def request1mb():
-    return Response(response1mb(), content_type=CONTENT_TYPE_PLAIN)
+def request_1mb():
+    return Response(response_1mb(), content_type=CONTENT_TYPE_PLAIN)
 
 @app.route('/json-response')
-def requestJson():
-    return Response(responseJson(), content_type=CONTENT_TYPE_JSON)
+def request_json():
+    return Response(response_json(), content_type=CONTENT_TYPE_JSON)
 
 @app.route('/html-response')
-def requestHtml():
-    return Response(responseHtml(), content_type=CONTENT_TYPE_HTML)
+def request_html():
+    return Response(response_html(), content_type=CONTENT_TYPE_HTML)
 
 @app.route('/slow-response')
-def requestSlow():
-    return Response(responseSlow(), content_type=CONTENT_TYPE_PLAIN)
+def request_slow():
+    return Response(response_slow(), content_type=CONTENT_TYPE_PLAIN)
 
-
-@app.route('/db-create')
-def requestDBcreate():
-    pass
-    # return mongoengine_create()
-    # return motorengine_create()
 
 @app.route('/db-read')
-def requestDBread():
-    pass
-    # return mongoengine_read()
-    # return motorengine_read()
+def request_db_read():
+    return Response(response_db_read_queries(), content_type=CONTENT_TYPE_JSON)
 
-@app.route('/db-crud')
-def requestDBcrud():
-    pass
-    # return mongoengine_crud()
-    # return motorengine_crud()
+@app.route('/db-write')
+def request_db_write():
+    return Response(response_db_write_queries(), content_type=CONTENT_TYPE_JSON)

@@ -8,81 +8,76 @@ def version():
     return wheezy.http.__version__
 
 
-def request1kb(request):
+def request_1kb(request):
     response = HTTPResponse()
-    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-    response.write(response1kb())
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+    response.write(response_1kb())
     return response
 
-def request100kb(request):
+def request_100kb(request):
     response = HTTPResponse()
-    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-    response.write(response100kb())
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+    response.write(response_100kb())
     return response
 
-def request1mb(request):
+def request_1mb(request):
     response = HTTPResponse()
-    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-    response.write(response1mb())
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+    response.write(response_1mb())
     return response
 
-def requestJson(request):
+def request_json(request):
     response = HTTPResponse()
-    response.headers = [('Content-Type', CONTENT_TYPE_JSON)]
-    response.write(responseJson())
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_JSON)]
+    response.write(response_json())
     return response
 
-def requestHtml(request):
+def request_html(request):
     response = HTTPResponse()
-    response.headers = [('Content-Type', CONTENT_TYPE_HTML)]
-    response.write(responseHtml())
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_HTML)]
+    response.write(response_html())
     return response
 
-def requestSlow(request):
+def request_slow(request):
     response = HTTPResponse()
-    response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-    response.write(responseSlow())
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+    response.write(response_slow())
     return response
 
 
-def requestDBcreate(request):
-    pass
-    # return mongoengine_create()
-    # return motorengine_create()
+def request_db_read(request):
+    response = HTTPResponse()
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_JSON)]
+    response.write(response_db_read_queries())
+    return response
 
-def requestDBread(request):
-    pass
-    # return mongoengine_read()
-    # return motorengine_read()
-
-def requestDBcrud(request):
-    pass
-    # return mongoengine_crud()
-    # return motorengine_crud()
+def request_db_write(request):
+    response = HTTPResponse()
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_JSON)]
+    response.write(response_db_write_queries())
+    return response
 
 
 def router_middleware(request, following):
     path = request.path
     if path == "/":
-        response = requestHtml(request)
+        response = request_html(request)
     elif path == "/1kb-response":
-        response = request1kb(request)
+        response = request_1kb(request)
     elif path == "/100kb-response":
-        response = request100kb(request)
+        response = request_100kb(request)
     elif path == "/1mb-response":
-        response = request1mb(request)
+        response = request_1mb(request)
     elif path == "/json-response":
-        response = requestJson(request)
+        response = request_json(request)
     elif path == "/html-response":
-        response = requestHtml(request)
+        response = request_html(request)
     elif path == "/slow-response":
-        response = requestSlow(request)
-    elif path == "/db-create":
-        response = requestDBcreate(request)
+        response = request_slow(request)
     elif path == "/db-read":
-        response = requestDBread(request)
-    elif path == "/db-crud":
-        response = requestDBcrud(request)
+        response = request_db_read(request)
+    elif path == "/db-write":
+        response = request_db_write(request)
     else:
         response = not_found()
     return response

@@ -1,5 +1,6 @@
 import os
 import json
+import random
 import time
 
 try:
@@ -10,6 +11,13 @@ except ImportError:
     except ImportError:
         import json
 
+try:
+    # Py2
+    range = xrange
+except NameError:
+    # Py3
+    pass
+
 from .models import MongoEngineDoc, MongoEngineDoc
 
 # "/1kb-response"
@@ -18,9 +26,8 @@ from .models import MongoEngineDoc, MongoEngineDoc
 # "/json-response"
 # "/slow-response"
 # "/html-response"
-# "/db-create"
 # "/db-read"
-# "/db-crud"
+# "/db-write"
 
 
 OK = 'OK'
@@ -47,85 +54,106 @@ RESPONSE_HTML = '''
     <li><a href="/html-response">HTML response</a></li>
     <li><a href="/slow-response">{}s waiting</a></li>
 
-    <li><a href="/db-create">MongoDB create</a></li>
-    <li><a href="/db-read">MongoDB create</a></li>
-    <li><a href="/db-crud">MongoDB list</a></li>
-
-    <li><a href="/async-slow-response">Async {}s waiting</a></li>
-    <li><a href="/async-db-create">Async MongoDB create</a></li>
-    <li><a href="/async-db-read">Async MongoDB create</a></li>
-    <li><a href="/async-db-crud">Async MongoDB list</a></li>
+    <li><a href="/db-read">MongoDB select queries</a></li>
+    <li><a href="/db-write">MongoDB write queries</a></li>
 </ul>
 '''.format(RESPONSE_SLOW, RESPONSE_SLOW)
 
 CONNECTION_CLOSE = 'close'
 CONNECTION_KEEP_ALIVE = 'keep-alive'
+CONTENT_LENGTH = 'Content-Length'
+CONTENT_TYPE = 'Content-Type'
 CONTENT_TYPE_PLAIN = 'text/plain'
 CONTENT_TYPE_HTML = 'text/html; charset=utf-8'
 CONTENT_TYPE_JSON = 'application/json; charset=utf-8'
+
 
 def to_json(data):
     return json.dumps(data)
 
 
-def response1kb():
+def response_1kb():
     return RESPONSE_1KB
 
-def response100kb():
+def response_100kb():
     return RESPONSE_100KB
 
-def response1mb():
+def response_1mb():
     return RESPONSE_1MB
 
-def responseJson():
+def response_json():
     return to_json(RESPONSE_JSON)
 
-def responseHtml():
+def response_html():
     return RESPONSE_HTML
 
-def responseSlow():
+def response_slow():
     time.sleep(RESPONSE_SLOW)
     return RESPONSE_SLOW_MSG
 
 
-def mongoengine_create():
-    MongoEngineDoc.objects.create(field1='1'*1, field2='2'*10, field3='3'*100)
-    return OK
+def response_db_read_queries():
+    engine = os.getenv('DB_ENGINE', None)
+    if engine == 'motorengine':
+        r = motorengine_read_queries()
+    else:
+        r = mongoengine_read_queries()
+    return to_json(r)
 
-def mongoengine_read():
-    MongoEngineDoc.objects.get(field1='1')
-    return OK
-
-def mongoengine_crud():
-    o, _ = MongoEngineDoc.objects.create(field1='1'*1, field2='2'*10, field3='3'*100)
-    o = MongoEngineDoc.objects.filter(field1='1')[0]
-    o.field1 = '11'
-    o.save()
-    o = MongoEngineDoc.objects.filter(field1='1')[0]
-    o.delete()
-    return OK
+def response_db_write_queries():
+    engine = os.getenv('DB_ENGINE', None)
+    if engine == 'motorengine':
+        r = motorengine_write_queries()
+    else:
+        r = mongoengine_write_queries()
+    return to_json(r)
 
 
-def motorengine_create():
-    MotorEngineDoc.objects.create(field1='1'*1, field2='2'*10, field3='3'*100)
-    return OK
+def mongoengine_read_queries():
+    '''
+    1 select count
+    10 selects by index
+    '''
+    n = MongoEngineDoc.objects.count()
+    r = []
+    for _ in range(10):
+        i = random.randint(0, n-1)
+        o = MongoEngineDoc.objects.all()[i]
+        r.append(o.to_json())
+    return r
 
-def motorengine_read():
-    MotorEngineDoc.objects.filter(field1='1')
-    return OK
+def mongoengine_write_queries():
+    '''
+    10 insert queries
+    '''
+    r = []
+    for _ in range(10):
+        v = os.urandom(24).encode('hex')
+        o = MongoEngineDoc2.objects.create(field1=v, field2=v, field3=v, field4=v, field5=v)
+        r.append(o.to_json())
+    return r
 
-def motorengine_crud():
-    def callback1():
-        pass
-    o, _ = MotorEngineDoc.objects.create(field1='1'*1, field2='2'*10, field3='3'*100, callback=callback1)
-    def callback2():
-        pass
-    o = MotorEngineDoc.objects.filter(field1='1').find_all(callback2)
-    o.field1 = '11'
-    o.save()
-    def callback3():
-        pass
-    o = MotorEngineDoc.objects.filter(field1='1').find_all(callback3)
-    o.delete()
-    return OK
 
+def motorengine_read_queries():
+    '''
+    1 select count
+    10 selects by index
+    '''
+    n = MotorEngineDoc.objects.count()
+    r = []
+    for _ in range(10):
+        i = random.randint(0, n-1)
+        o = MotorEngineDoc.objects.all()[i]
+        r.append(o.to_json())
+    return r
+
+def motorengine_write_queries():
+    '''
+    10 insert queries
+    '''
+    r = []
+    for _ in range(10):
+        v = os.urandom(24).encode('hex')
+        o = MotorEngineDoc2.objects.create(field1=v, field2=v, field3=v, field4=v, field5=v)
+        r.append(o.to_json())
+    return r

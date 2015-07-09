@@ -15,65 +15,58 @@ def version():
 class Request1kb(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(response1kb())
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+        response.write(response_1kb())
         return response
 
 class Request100kb(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(response100kb())
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+        response.write(response_100kb())
         return response
 
 class Request1mb(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(response1mb())
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+        response.write(response_1mb())
         return response
 
 class RequestJson(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_JSON)]
-        response.write(responseJson())
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_JSON)]
+        response.write(response_json())
         return response
 
 class RequestHtml(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_HTML)]
-        response.write(responseHtml())
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_HTML)]
+        response.write(response_html())
         return response
 
 class RequestSlow(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(responseSlow())
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+        response.write(response_slow())
         return response
 
-
-class RequestDBcreate(BaseHandler):
-    def get(self):
-        response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(OK)
-        return response
 
 class RequestDBread(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(OK)
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_JSON)]
+        response.write(response_db_read_queries())
         return response
 
-class RequestDBcrud(BaseHandler):
+class RequestDBwrite(BaseHandler):
     def get(self):
         response = HTTPResponse()
-        response.headers = [('Content-Type', CONTENT_TYPE_PLAIN)]
-        response.write(OK)
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_JSON)]
+        response.write(response_db_write_queries())
         return response
 
 
@@ -85,9 +78,8 @@ all_urls = [
     url('json-response', RequestJson, name='jsonresponse'),
     url('html-response', RequestHtml, name='htmlresponse'),
     url('slow-response', RequestSlow, name='slowresponse'),
-    url('db-create', RequestDBcreate, name='dbcreate'),
     url('db-read', RequestDBread, name='dbread'),
-    url('db-crud', RequestDBcrud, name='dbcrud'),
+    url('db-write', RequestDBwrite, name='dbwrite'),
 ]
 
 options = {}
