@@ -18,7 +18,7 @@ except NameError:
     # Py3
     pass
 
-from .models import MongoEngineDoc, MongoEngineDoc
+from .models import *
 
 # "/1kb-response"
 # "/100kb-response"
