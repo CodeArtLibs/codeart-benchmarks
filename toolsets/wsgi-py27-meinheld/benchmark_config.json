@@ -1,0 +1,12 @@
+{
+    "db": "MongoDB", 
+    "db_engine": "mongoengine", 
+    "json_lib": "ujson", 
+    "language": "python2.7", 
+    "language_version": "python 2.7.5", 
+    "name": "wsgi-py27-meinheld", 
+    "web_framework": "wsgi", 
+    "web_framework_version": "", 
+    "web_server": "meinheld", 
+    "web_server_version": "0.5.7"
+}
