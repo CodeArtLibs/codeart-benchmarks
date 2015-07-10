@@ -1,1 +1,1 @@
-web: env/bin/python run.py
+web: env/bin/python -OO run.py
