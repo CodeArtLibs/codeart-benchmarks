@@ -1,0 +1,12 @@
+{
+    "db": "MongoDB", 
+    "db_engine": "mongoengine", 
+    "json_lib": "pyjson", 
+    "language": "cython", 
+    "language_version": "", 
+    "name": "wsgi-cython-bjoern", 
+    "web_framework": "wsgi", 
+    "web_framework_version": "", 
+    "web_server": "bjoern", 
+    "web_server_version": ""
+}

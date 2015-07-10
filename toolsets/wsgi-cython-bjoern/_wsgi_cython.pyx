@@ -1,0 +1,305 @@
+import mongoengine
+import motorengine
+
+
+class MongoEngineDoc(mongoengine.Document):
+    field1 = mongoengine.StringField(max_length=200)
+    field2 = mongoengine.StringField(max_length=200)
+    field3 = mongoengine.StringField(max_length=200)
+    field4 = mongoengine.StringField(max_length=200)
+    field5 = mongoengine.StringField(max_length=200)
+
+class MongoEngineDoc2(mongoengine.Document):
+    field1 = mongoengine.StringField(max_length=200)
+    field2 = mongoengine.StringField(max_length=200)
+    field3 = mongoengine.StringField(max_length=200)
+    field4 = mongoengine.StringField(max_length=200)
+    field5 = mongoengine.StringField(max_length=200)
+
+
+class MotorEngineDoc(motorengine.Document):
+    field1 = motorengine.StringField(max_length=200)
+    field2 = motorengine.StringField(max_length=200)
+    field3 = motorengine.StringField(max_length=200)
+    field4 = motorengine.StringField(max_length=200)
+    field5 = motorengine.StringField(max_length=200)
+
+class MotorEngineDoc2(motorengine.Document):
+    field1 = motorengine.StringField(max_length=200)
+    field2 = motorengine.StringField(max_length=200)
+    field3 = motorengine.StringField(max_length=200)
+    field4 = motorengine.StringField(max_length=200)
+    field5 = motorengine.StringField(max_length=200)
+
+
+import os
+import json
+import random
+import time
+
+try:
+    import ujson as json
+except ImportError:
+    try:
+        import simplejson as json
+    except ImportError:
+        import json
+
+try:
+    # Py2
+    range = xrange
+except NameError:
+    # Py3
+    pass
+
+
+OK = 'OK'
+CHARS10 = '1kb 1kb - '
+RESPONSE_1KB = CHARS10 * 100 # ~1kb
+RESPONSE_100KB = CHARS10 * 10000 # ~100kb
+RESPONSE_1MB = CHARS10 * 100000 # ~1mb
+
+RESPONSE_JSON = {
+    'username': 'codeart',
+    'permissions': ['create', 'update', 'list', 'read', 'delete'],
+    'groups': {'group1': 'crlud', 'group2': 'cr', 'group3': 'crlu'},
+}
+
+RESPONSE_SLOW = float(os.getenv('N_SECONDS', 0.1)) # seconds
+RESPONSE_SLOW_MSG = '{}s response'.format(RESPONSE_SLOW)
+
+RESPONSE_HTML = '''
+<ul>
+    <li><a href="/1kb-response">1kb text</a></li>
+    <li><a href="/100kb-response">100kb text</a></li>
+    <li><a href="/1mb-response">1mb text</a></li>
+    <li><a href="/json-response">JSON response</a></li>
+    <li><a href="/html-response">HTML response</a></li>
+    <li><a href="/slow-response">{}s waiting</a></li>
+
+    <li><a href="/db-read">MongoDB select queries</a></li>
+    <li><a href="/db-write">MongoDB write queries</a></li>
+
+    <li><a href="/cache-read">Redis cached response</a></li>
+</ul>
+'''.format(RESPONSE_SLOW, RESPONSE_SLOW)
+
+CONNECTION_CLOSE = 'close'
+CONNECTION_KEEP_ALIVE = 'keep-alive'
+CONTENT_LENGTH = 'Content-Length'
+CONTENT_TYPE = 'Content-Type'
+CONTENT_TYPE_PLAIN = 'text/plain'
+CONTENT_TYPE_HTML = 'text/html; charset=utf-8'
+CONTENT_TYPE_JSON = 'application/json; charset=utf-8'
+
+def to_json(data):
+    return json.dumps(data)
+
+def response_slow():
+    time.sleep(RESPONSE_SLOW)
+    return RESPONSE_SLOW_MSG
+
+
+# MongoDB
+
+def response_db_read_queries():
+    engine = os.getenv('DB_ENGINE', None)
+    if engine == 'motorengine':
+        r = motorengine_read_queries()
+    else:
+        r = mongoengine_read_queries()
+    return to_json(r)
+
+def response_db_write_queries():
+    engine = os.getenv('DB_ENGINE', None)
+    if engine == 'motorengine':
+        r = motorengine_write_queries()
+    else:
+        r = mongoengine_write_queries()
+    return to_json(r)
+
+
+def mongoengine_read_queries():
+    '''
+    1 select count
+    10 selects by index
+    '''
+    n = MongoEngineDoc.objects.count()
+    r = []
+    for _ in range(10):
+        i = random.randint(0, n-1)
+        o = MongoEngineDoc.objects[i]
+        r.append(o.to_json())
+    return r
+
+def mongoengine_write_queries():
+    '''
+    10 insert queries
+    '''
+    r = []
+    for _ in range(10):
+        v = os.urandom(24).encode('hex')
+        o = MongoEngineDoc2.objects.create(field1=v, field2=v, field3=v, field4=v, field5=v)
+        r.append(o.to_json())
+    return r
+
+
+def motorengine_read_queries():
+    '''
+    1 select count
+    10 selects by index
+    '''
+    n = MotorEngineDoc.objects.count()
+    r = []
+    for _ in range(10):
+        i = random.randint(0, n-1)
+        o = MotorEngineDoc.objects[i]
+        r.append(o.to_json())
+    return r
+
+def motorengine_write_queries():
+    '''
+    10 insert queries
+    '''
+    r = []
+    for _ in range(10):
+        v = os.urandom(24).encode('hex')
+        o = MotorEngineDoc2.objects.create(field1=v, field2=v, field3=v, field4=v, field5=v)
+        r.append(o.to_json())
+    return r
+
+
+# Redis Cache
+
+CACHE_KEY = 'c'
+
+try:
+    import redis
+    redis_instance = redis.StrictRedis(host='localhost', port=6379, db=0)
+    print('[Redis] Cache configured')
+except Exception as e:
+    redis_instance = None
+    print('[Redis] Unable to connect or populate Redis cache')
+    print(str(e))
+
+
+def response_cached():
+    if redis_instance:
+        return redis_instance.get(CACHE_KEY)
+    return OK
+
+def populate_cache():
+    if redis_instance:
+        redis_instance.set(CACHE_KEY, RESPONSE_100KB)
+
+
+
+
+def request_1kb(environ, start_response):
+    data = RESPONSE_1KB
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+def request_100kb(environ, start_response):
+    data = RESPONSE_100KB
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+def request_1mb(environ, start_response):
+    data = RESPONSE_1MB
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+def request_json(environ, start_response):
+    response = RESPONSE_JSON
+    data = to_json(response)
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_JSON),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+def request_html(environ, start_response):
+    data = RESPONSE_HTML
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_HTML),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+def request_slow(environ, start_response):
+    data = response_slow()
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+
+def request_db_read(environ, start_response):
+    data = response_db_read_queries()
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_JSON),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+def request_db_write(environ, start_response):
+    data = response_db_write_queries()
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_JSON),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+
+def request_cache_read(environ, start_response):
+    data = response_cached()
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+
+
+def app(environ, start_response):
+    path = environ['PATH_INFO']
+    if path.startswith('/json-response'):
+        return request_json(environ, start_response)
+    elif path.startswith('/1kb-response'):
+        return request_1kb(environ, start_response)
+    elif path.startswith('/100kb-response'):
+        return request_100kb(environ, start_response)
+    elif path.startswith('/1mb-response'):
+        return request_1mb(environ, start_response)
+    elif path.startswith('/slow-response'):
+        return request_slow(environ, start_response)
+    elif path.startswith('/db-read'):
+        return request_db_read(environ, start_response)
+    elif path.startswith('/db-write'):
+        return request_db_write(environ, start_response)
+    elif path.startswith('/cache-read'):
+        return request_cache_read(environ, start_response)
+    else:
+        return request_html(environ, start_response)
+
+
