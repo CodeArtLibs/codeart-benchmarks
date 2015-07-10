@@ -52,14 +52,14 @@ class RequestDBread(tornado.web.RequestHandler):
     @gen.coroutine
     def get(self):
         self.set_header(CONTENT_TYPE, CONTENT_TYPE_JSON)
-        response = yield response_db_read_queries()
+        response = yield gen.maybe_future(response_db_read_queries())
         self.write(response)
 
 class RequestDBwrite(tornado.web.RequestHandler):
     @gen.coroutine
     def get(self):
         self.set_header(CONTENT_TYPE, CONTENT_TYPE_JSON)
-        response = yield response_db_write_queries()
+        response = yield gen.maybe_future(response_db_write_queries())
         self.write(response)
 
 
@@ -67,7 +67,7 @@ class RequestCacheRead(tornado.web.RequestHandler):
     @gen.coroutine
     def get(self):
         self.set_header(CONTENT_TYPE, CONTENT_TYPE_PLAIN)
-        response = yield response_cached()
+        response = yield gen.maybe_future(response_cached())
         self.write(response)
 
 
