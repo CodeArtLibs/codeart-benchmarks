@@ -5,7 +5,7 @@ def version():
     return 'spec'
 
 
-def response_1kb(environ, start_response):
+def request_1kb(environ, start_response):
     data = RESPONSE_1KB
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
@@ -14,7 +14,7 @@ def response_1kb(environ, start_response):
     start_response('200 OK', response_headers)
     return [bytes(data, 'utf-8')]
 
-def response_100kb(environ, start_response):
+def request_100kb(environ, start_response):
     data = RESPONSE_100KB
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
@@ -23,7 +23,7 @@ def response_100kb(environ, start_response):
     start_response('200 OK', response_headers)
     return [bytes(data, 'utf-8')]
 
-def response_1mb(environ, start_response):
+def request_1mb(environ, start_response):
     data = RESPONSE_1MB
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
@@ -32,7 +32,7 @@ def response_1mb(environ, start_response):
     start_response('200 OK', response_headers)
     return [bytes(data, 'utf-8')]
 
-def response_json(environ, start_response):
+def request_json(environ, start_response):
     response = RESPONSE_JSON
     data = to_json(response)
     response_headers = [
@@ -42,7 +42,7 @@ def response_json(environ, start_response):
     start_response('200 OK', response_headers)
     return [bytes(data, 'utf-8')]
 
-def response_html(environ, start_response):
+def request_html(environ, start_response):
     data = RESPONSE_HTML
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_HTML),
@@ -51,7 +51,7 @@ def response_html(environ, start_response):
     start_response('200 OK', response_headers)
     return [bytes(data, 'utf-8')]
 
-def response_slow(environ, start_response):
+def request_slow(environ, start_response):
     data = response_slow()
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
@@ -61,7 +61,7 @@ def response_slow(environ, start_response):
     return [bytes(data, 'utf-8')]
 
 
-def response_db_read(environ, start_response):
+def request_db_read(environ, start_response):
     data = response_db_read_queries()
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_JSON),
@@ -70,7 +70,7 @@ def response_db_read(environ, start_response):
     start_response('200 OK', response_headers)
     return [bytes(data, 'utf-8')]
 
-def response_db_write(environ, start_response):
+def request_db_write(environ, start_response):
     data = response_db_write_queries()
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_JSON),
@@ -80,7 +80,7 @@ def response_db_write(environ, start_response):
     return [bytes(data, 'utf-8')]
 
 
-def response_cache_read(environ, start_response):
+def request_cache_read(environ, start_response):
     data = response_cached()
     response_headers = [
         (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
@@ -94,20 +94,20 @@ def response_cache_read(environ, start_response):
 def app(environ, start_response):
     path = environ['PATH_INFO']
     if path.startswith('/json-response'):
-        return response_json(environ, start_response)
+        return request_json(environ, start_response)
     elif path.startswith('/1kb-response'):
-        return response_1kb(environ, start_response)
+        return request_1kb(environ, start_response)
     elif path.startswith('/100kb-response'):
-        return response_100kb(environ, start_response)
+        return request_100kb(environ, start_response)
     elif path.startswith('/1mb-response'):
-        return response_1mb(environ, start_response)
+        return request_1mb(environ, start_response)
     elif path.startswith('/slow-response'):
-        return response_slow(environ, start_response)
+        return request_slow(environ, start_response)
     elif path.startswith('/db-read'):
-        return response_db_read(environ, start_response)
+        return request_db_read(environ, start_response)
     elif path.startswith('/db-write'):
-        return response_db_write(environ, start_response)
+        return request_db_write(environ, start_response)
     elif path.startswith('/cache-read'):
-        return response_cache_read(environ, start_response)
+        return request_cache_read(environ, start_response)
     else:
-        return response_html(environ, start_response)
+        return request_html(environ, start_response)
