@@ -46,3 +46,8 @@ def request_db_read():
 @app.route('/db-write')
 def request_db_write():
     return Response(response_db_write_queries(), content_type=CONTENT_TYPE_JSON)
+
+
+@app.route('/cache-read')
+def request_cache_read():
+    return Response(response_cached(), content_type=CONTENT_TYPE_PLAIN)

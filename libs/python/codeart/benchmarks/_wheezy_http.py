@@ -58,26 +58,36 @@ def request_db_write(request):
     return response
 
 
+def request_cache_read(request):
+    response = HTTPResponse()
+    response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+    response.write(response_cached())
+    return response
+
+
+
 def router_middleware(request, following):
     path = request.path
-    if path == "/":
+    if path == '/':
         response = request_html(request)
-    elif path == "/1kb-response":
+    elif path == '/1kb-response':
         response = request_1kb(request)
-    elif path == "/100kb-response":
+    elif path == '/100kb-response':
         response = request_100kb(request)
-    elif path == "/1mb-response":
+    elif path == '/1mb-response':
         response = request_1mb(request)
-    elif path == "/json-response":
+    elif path == '/json-response':
         response = request_json(request)
-    elif path == "/html-response":
+    elif path == '/html-response':
         response = request_html(request)
-    elif path == "/slow-response":
+    elif path == '/slow-response':
         response = request_slow(request)
-    elif path == "/db-read":
+    elif path == '/db-read':
         response = request_db_read(request)
-    elif path == "/db-write":
+    elif path == '/db-write':
         response = request_db_write(request)
+    elif path == '/cache-read':
+        response = request_cache_read(request)
     else:
         response = not_found()
     return response

@@ -63,14 +63,23 @@ class RequestDBwrite(tornado.web.RequestHandler):
         self.write(response)
 
 
+class RequestCacheRead(tornado.web.RequestHandler):
+    @gen.coroutine
+    def get(self):
+        self.set_header(CONTENT_TYPE, CONTENT_TYPE_PLAIN)
+        response = yield response_cached()
+        self.write(response)
+
+
 app = tornado.web.Application([
-    (r"/", RequestHtml),
-    (r"/1kb-response", Request1kb),
-    (r"/100kb-response", Request100kb),
-    (r"/1mb-response", Request1mb),
-    (r"/json-response", RequestJson),
-    (r"/html-response", RequestHtml),
-    (r"/slow-response", RequestSlow),
-    (r"/db-read", RequestDBread),
-    (r"/db-write", RequestDBwrite),
+    (r'/', RequestHtml),
+    (r'/1kb-response', Request1kb),
+    (r'/100kb-response', Request100kb),
+    (r'/1mb-response', Request1mb),
+    (r'/json-response', RequestJson),
+    (r'/html-response', RequestHtml),
+    (r'/slow-response', RequestSlow),
+    (r'/db-read', RequestDBread),
+    (r'/db-write', RequestDBwrite),
+    (r'/cache-read', RequestCacheRead),
 ])

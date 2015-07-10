@@ -25,3 +25,6 @@ try:
 except Exception as e:
     print('[MotorEngine] Unable to connect or populate MongoDB server')
     print(str(e))
+
+
+populate_cache()

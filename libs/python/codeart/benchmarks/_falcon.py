@@ -37,6 +37,7 @@ class RequestSlow(object):
         response.set_header(CONTENT_TYPE, CONTENT_TYPE_PLAIN)
         response.body = response_slow()
 
+
 class RequestDBread(object):
     def on_get(self, request, response):
         response.set_header(CONTENT_TYPE, CONTENT_TYPE_JSON)
@@ -46,6 +47,12 @@ class RequestDBwrite(object):
     def on_get(self, request, response):
         response.set_header(CONTENT_TYPE, CONTENT_TYPE_JSON)
         response.body = response_db_write_queries()
+
+
+class RequestCacheRead(object):
+    def on_get(self, request, response):
+        response.set_header(CONTENT_TYPE, CONTENT_TYPE_PLAIN)
+        response.body = response_cached()
 
 
 app = falcon.API()
@@ -58,3 +65,4 @@ app.add_route('/html-response', RequestHtml())
 app.add_route('/slow-response', RequestSlow())
 app.add_route('/db-read', RequestDBread())
 app.add_route('/db-write', RequestDBwrite())
+app.add_route('/cache-read', RequestCacheRead())

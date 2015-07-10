@@ -70,6 +70,14 @@ class RequestDBwrite(BaseHandler):
         return response
 
 
+class RequestCacheRead(BaseHandler):
+    def get(self):
+        response = HTTPResponse()
+        response.headers = [(CONTENT_TYPE, CONTENT_TYPE_PLAIN)]
+        response.write(response_cached())
+        return response
+
+
 all_urls = [
     url('', RequestHtml, name='home'),
     url('1kb-response', Request1kb, name='1kbresponse'),
@@ -80,6 +88,7 @@ all_urls = [
     url('slow-response', RequestSlow, name='slowresponse'),
     url('db-read', RequestDBread, name='dbread'),
     url('db-write', RequestDBwrite, name='dbwrite'),
+    url('/cache-read', RequestCacheRead, name='cacheread'),
 ]
 
 options = {}

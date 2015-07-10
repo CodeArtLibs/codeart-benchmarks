@@ -28,6 +28,7 @@ from .models import *
 # "/html-response"
 # "/db-read"
 # "/db-write"
+# "/cache-read"
 
 
 OK = 'OK'
@@ -56,6 +57,8 @@ RESPONSE_HTML = '''
 
     <li><a href="/db-read">MongoDB select queries</a></li>
     <li><a href="/db-write">MongoDB write queries</a></li>
+
+    <li><a href="/cache-read">Redis cached response</a></li>
 </ul>
 '''.format(RESPONSE_SLOW, RESPONSE_SLOW)
 
@@ -91,6 +94,8 @@ def response_slow():
     time.sleep(RESPONSE_SLOW)
     return RESPONSE_SLOW_MSG
 
+
+# MongoDB
 
 def response_db_read_queries():
     engine = os.getenv('DB_ENGINE', None)
@@ -157,3 +162,28 @@ def motorengine_write_queries():
         o = MotorEngineDoc2.objects.create(field1=v, field2=v, field3=v, field4=v, field5=v)
         r.append(o.to_json())
     return r
+
+
+# Redis Cache
+
+CACHE_KEY = 'c'
+
+try:
+    import redis
+    redis_instance = redis.StrictRedis(host='localhost', port=6379, db=0)
+    print('[Redis] Cache configured')
+except Exception as e:
+    redis_instance = None
+    print('[Redis] Unable to connect or populate Redis cache')
+    print(str(e))
+
+
+def response_cached():
+    if redis_instance:
+        return redis_instance.get(CACHE_KEY)
+    return OK
+
+def populate_cache():
+    if redis_instance:
+        redis_instance.set(CACHE_KEY, RESPONSE_100KB)
+

@@ -80,6 +80,17 @@ def response_db_write(environ, start_response):
     return [data]
 
 
+def response_cache_read(environ, start_response):
+    data = response_cached()
+    response_headers = [
+        (CONTENT_TYPE, CONTENT_TYPE_PLAIN),
+        (CONTENT_LENGTH, str(len(data))),
+    ]
+    start_response(b'200 OK', response_headers)
+    return [data]
+
+
+
 def app(environ, start_response):
     path = environ['PATH_INFO']
     if path.startswith('/json-response'):
@@ -96,5 +107,7 @@ def app(environ, start_response):
         return response_db_read(environ, start_response)
     elif path.startswith('/db-write'):
         return response_db_write(environ, start_response)
+    elif path.startswith('/cache-read'):
+        return response_cache_read(environ, start_response)
     else:
         return response_html(environ, start_response)

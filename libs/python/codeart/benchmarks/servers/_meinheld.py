@@ -1,7 +1,10 @@
 import os
 
-import meinheld
-import meinheld.server
+try:
+    import meinheld
+    import meinheld.server
+except ImportError:
+    print('Meinheld is not installed.')
 
 
 def disable_logs():

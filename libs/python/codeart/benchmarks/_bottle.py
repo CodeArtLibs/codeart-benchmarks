@@ -54,4 +54,10 @@ def request_db_write_queries():
     return response_db_write_queries()
 
 
+@route('/cache-read')
+def request_cache_read():
+    response.content_type = CONTENT_TYPE_PLAIN
+    return response_cached()
+
+
 app = bottle.default_app()
